@@ -1,0 +1,44 @@
+.user-menu {
+  border-radius: 20px;
+  background: #f9f9f9;
+  visibility: hidden;
+}
+
+@media screen and (min-width: 1279px) {
+  .user-menu {
+    visibility: visible;
+  }
+}
+
+.user-menu_position_bottom {
+  visibility: visible;
+  position: absolute;
+  bottom: 46px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+@media screen and (min-width: 1279px) {
+  .user-menu_position_bottom {
+    visibility: visible;
+    margin-left: auto;
+    position: static;
+    bottom: 0;
+    left: 0%;
+    transform: translate(0, 0);
+  }
+}
+
+.user-menu_position_right {
+  margin-left: auto;
+}
+
+@media screen and (min-width: 1279px) {
+  .user-menu_position_bottom {
+    visibility: visible;
+    position: static;
+    bottom: 0;
+    left: 0;
+    transform: translate(0, 0);
+  }
+}

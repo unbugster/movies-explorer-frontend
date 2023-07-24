@@ -1,0 +1,31 @@
+.header {
+  background-color: #f3c1f8;
+  box-sizing: border-box;
+}
+
+.header_bg_white {
+  background-color: #fff;
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 74px;
+  gap: 10px;
+}
+
+@media screen and (min-width: 1279px) {
+  .header__container {
+    display: flex;
+  }
+}
+
+.header__logo {
+  cursor: pointer;
+}
+@media screen and (min-width: 1279px) {
+  .header__logo {
+    margin-right: 417px;
+  }
+}

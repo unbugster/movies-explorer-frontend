@@ -1,0 +1,28 @@
+.burger {
+  visibility: visible;
+  z-index: 2;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 1279px) {
+  .burger {
+    visibility: hidden;
+    display: none;
+  }
+}
+
+.burger_active {
+  width: 22px;
+  height: 22px;
+  background: url("../../images/header_burger_active.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.burger_inactive {
+  width: 40px;
+  height: 43px;
+  background: url("../../images/header_burger_inactive.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
