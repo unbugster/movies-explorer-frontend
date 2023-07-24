@@ -1,0 +1,23 @@
+.title {
+  /* text-decoration: underline; */
+  /* text-underline-offset: 28px; */
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.72px;
+  padding: 0;
+  margin: 0;
+  padding-bottom: 28px;
+  border-bottom: 1px solid black;
+  margin-bottom: 60px;
+}
+
+@media screen and (min-width: 767px) {
+  .title {
+    font-size: 22px;
+    letter-spacing: -0.88px;
+    padding-bottom: 23px;
+    margin-bottom: 70px;
+  }
+}

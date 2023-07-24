@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Header } from "../Header";
 import "./App.css";
+import { Promo } from "../Promo";
+import { AboutProject } from "../AboutProject";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -14,6 +16,8 @@ const App = () => {
         isLoggedIn={isLoggedIn}
         setIsLoggedIn={setIsLoggedIn}
       />
+      <Promo />
+      <AboutProject />
     </div>
   );
 };
