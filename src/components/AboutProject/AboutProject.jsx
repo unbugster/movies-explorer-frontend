@@ -3,39 +3,42 @@ import "./AboutProject.css";
 
 const AboutProject = () => {
   return (
-    <section aria-label="Описание этапов дипломного проекта" className="about">
-      <div className="about__container container">
+    <section
+      aria-label="Описание этапов дипломного проекта"
+      className="about-project"
+    >
+      <div className="about-project__container container">
         <SectionTitle>О проекте</SectionTitle>
 
-        <ul className="about__list">
-          <li className="about__item">
-            <h3 className="about__subtitle">
+        <ul className="about-project__list">
+          <li className="about-project__item">
+            <h3 className="about-project__subtitle">
               Дипломный проект включал 5 этапов
             </h3>
-            <p className="about__description">
+            <p className="about-project__description">
               Составление плана, работу над бэкендом, вёрстку, добавление
               функциональности и финальные доработки.
             </p>
           </li>
 
-          <li className="about__item">
-            <h3 className="about__subtitle">
+          <li className="about-project__item">
+            <h3 className="about-project__subtitle">
               На выполнение диплома ушло 5 недель
             </h3>
-            <p className="about__description">
+            <p className="about-project__description">
               У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было
               соблюдать, чтобы успешно защититься.
             </p>
           </li>
         </ul>
 
-        <div className="about__result">
-          <div className="about__result-week about__result-week_black">
+        <div className="about-project__result">
+          <div className="about-project__result-week about-project__result-week_black">
             1 неделя
           </div>
-          <div className="about__result-week">4 недели</div>
-          <div className="about__result-web">Back-end</div>
-          <div className="about__result-web">Front-end</div>
+          <div className="about-project__result-week">4 недели</div>
+          <div className="about-project__result-web">Back-end</div>
+          <div className="about-project__result-web">Front-end</div>
         </div>
       </div>
     </section>
