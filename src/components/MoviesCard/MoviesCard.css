@@ -1,0 +1,71 @@
+.moviescard__image {
+  vertical-align: bottom;
+  transition: all 0.2s linear;
+  object-fit: cover;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.moviescard__image:hover {
+  transform: scale(1.02);
+  transform-origin: 50% 100%;
+  cursor: pointer;
+}
+
+.moviescard__details {
+  position: relative;
+}
+
+.moviescard__title {
+  margin: 0 0 29px;
+  font-size: 12px;
+  font-weight: 500;
+  padding-right: 24px;
+}
+
+.moviescard__duration {
+  margin: 0;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+  color: #a0a0a0;
+  border-top: 1px solid #e8e8e8;
+  padding-top: 5px;
+}
+
+.moviescard__like-btn {
+  background: no-repeat center/contain url("../../images/movies_heart-icon.svg");
+  padding: 0;
+  margin: 0;
+  width: 24px;
+  height: 24px;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: -5px;
+  right: 0;
+}
+
+.moviescard__like-btn_liked {
+  background: no-repeat center/contain
+    url("../../images/movies_heart-icon_liked.svg");
+}
+
+.moviescard__delete-btn {
+  background: no-repeat center/contain
+    url("../../images/movies_heart-icon_remove-like.svg");
+  display: none;
+  padding: 0;
+  margin: 0;
+  width: 24px;
+  height: 24px;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: -5px;
+  right: 0;
+}
+
+.moviescard__container:hover .moviescard__delete-btn {
+  display: block;
+}

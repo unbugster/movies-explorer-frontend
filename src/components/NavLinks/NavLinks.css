@@ -26,6 +26,7 @@
 .nav_opened {
   opacity: 1;
   visibility: visible;
+  z-index: 2;
 }
 
 @media screen and (min-width: 1279px) {

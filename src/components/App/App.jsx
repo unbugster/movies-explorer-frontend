@@ -7,6 +7,8 @@ import { Techs } from "../Techs/Techs";
 import { AboutMe } from "../AboutMe";
 import { Portfolio } from "../Portfolio";
 import { Footer } from "../Footer";
+import { SearchForm } from "../SearchForm/SearchForm";
+import { Movies } from "../Movies/Movies";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -20,11 +22,12 @@ const App = () => {
         isLoggedIn={isLoggedIn}
         setIsLoggedIn={setIsLoggedIn}
       />
-      <Promo />
+      {/* <Promo />
       <AboutProject />
       <Techs />
       <AboutMe />
-      <Portfolio />
+      <Portfolio /> */}
+      <Movies />
       <Footer />
     </div>
   );
