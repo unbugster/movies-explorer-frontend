@@ -1,7 +1,6 @@
 import classNames from "classnames";
 import "./UserMenu.css";
 import { Button } from "../Button/Button";
-import { NavLink } from "react-router-dom";
 
 const UserMenu = (props) => {
   const { isBurgerActive, setIsBurgerActive } = props;
