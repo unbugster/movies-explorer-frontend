@@ -16,12 +16,13 @@ const MoviesCard = ({ movie }) => {
         </p>
 
         <button
+          type="button"
           className={`moviescard__like-btn ${
             movie.isLiked ? " moviescard__like-btn_liked" : ""
           }`}
         ></button>
 
-        <button className={`moviescard__delete-btn`}></button>
+        <button type="button" className={`moviescard__delete-btn`}></button>
       </div>
     </li>
   );
