@@ -5,12 +5,17 @@ import { MoviesCardList } from "../MoviesCardList/MoviesCardList";
 
 const SavedMovies = () => {
   return (
-    <section className="saved-movies" aria-label="Галерея сохраненных фильмов">
-      <div className="saved-movies__container container">
-        <SearchForm />
-        <MoviesCardList movies={moviesData} />
-      </div>
-    </section>
+    <>
+      <SearchForm />
+      <section
+        className="saved-movies"
+        aria-label="Галерея сохраненных фильмов"
+      >
+        <div className="saved-movies__container container">
+          <MoviesCardList movies={moviesData} />
+        </div>
+      </section>
+    </>
   );
 };
 

@@ -12,6 +12,7 @@ const MoviesCardList = ({ movies }) => {
     location.pathname === "/saved-movies"
       ? movies.filter((m) => m.isLiked)
       : movies;
+  movies = size.width <= 450 ? movies.slice(0, 2) : movies;
 
   return (
     <>
@@ -29,7 +30,7 @@ const MoviesCardList = ({ movies }) => {
             })}
       </ul>
       {location.pathname === "/saved-movies" ? (
-        ""
+        <div className="movies-list__placeholder"></div>
       ) : (
         <Button className="button_type_more" btnType="button" transparent>
           Еще

@@ -18,6 +18,7 @@ export const moviesData = [
     nameRU: "В погоне за Бенкси",
     duration: 102,
     thumbnail: "https://i.ibb.co/6w1n7zk/pic-COLOR-pic-8.jpg",
+    isLiked: "true",
   },
   {
     movieId: 4,
@@ -42,7 +43,6 @@ export const moviesData = [
     nameRU: "Когда я думаю о Германии ночью",
     duration: 80,
     thumbnail: "https://i.ibb.co/M64LG0C/pic-COLOR-pic-2.jpg",
-    isLiked: "true",
   },
   {
     movieId: 8,

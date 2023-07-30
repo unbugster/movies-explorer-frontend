@@ -25,5 +25,17 @@
     grid-template-columns: repeat(auto-fit, minmax(auto, 270px));
     margin-top: 50px;
     justify-content: flex-start;
+    margin-bottom: 50px;
+  }
+}
+
+.movies-list__placeholder {
+  width: 100%;
+  height: 97px;
+}
+
+@media screen and (min-width: 1279px) {
+  .movies-list__placeholder {
+    height: 185px;
   }
 }
