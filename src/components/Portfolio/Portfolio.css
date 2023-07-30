@@ -71,6 +71,7 @@
   display: flex;
   justify-content: space-between;
   transition: all 0.2s linear;
+  align-items: center;
 }
 
 @media screen and (min-width: 767px) {
@@ -102,5 +103,6 @@
   .portfolio__icon {
     width: 17px;
     height: 40px;
+    padding-right: 5px;
   }
 }
