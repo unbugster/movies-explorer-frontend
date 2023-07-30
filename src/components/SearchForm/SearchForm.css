@@ -33,6 +33,12 @@
   gap: 40px;
 }
 
+@media screen and (min-width: 767px) {
+  .search__form {
+    gap: 31px;
+  }
+}
+
 .search__form-input {
   color: #000;
   border: 0;
@@ -81,7 +87,7 @@
   width: 100%;
   display: flex;
   border-bottom: 1px #e8e8e8 solid;
-  padding-bottom: 15px;
+  padding-bottom: 10px;
 }
 
 .search__short-films {

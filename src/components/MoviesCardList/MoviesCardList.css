@@ -2,7 +2,7 @@
   list-style-type: none;
   display: grid;
   margin: 0;
-  padding: 40px 0 0 0;
+  padding: 30px 0 0 0;
   gap: 34px;
   grid-template-columns: repeat(auto-fit, minmax(auto, 300px));
   justify-content: center;
@@ -11,9 +11,10 @@
 
 @media screen and (min-width: 767px) {
   .movies-list {
-    padding-top: 55px;
+    padding-top: 45px;
     gap: 30px;
     grid-template-columns: repeat(auto-fit, minmax(auto, 339px));
+    margin-bottom: 54px;
   }
 }
 
@@ -22,7 +23,7 @@
     padding: 0;
     gap: 39px 20px;
     grid-template-columns: repeat(auto-fit, minmax(auto, 270px));
-    margin-top: 60px;
+    margin-top: 50px;
     justify-content: flex-start;
   }
 }
