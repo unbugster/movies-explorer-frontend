@@ -10,19 +10,20 @@ const MoviesCard = ({ movie }) => {
         alt={movie.nameRU}
       />
       <div className="moviescard__details">
-        <p className="moviescard__title">{movie.nameRU}</p>
+        <div className="moviescard__title-container">
+          <p className="moviescard__title">{movie.nameRU}</p>
+          <button
+            type="button"
+            className={`moviescard__like-btn ${
+              movie.isLiked ? " moviescard__like-btn_liked" : ""
+            }`}
+          ></button>
+
+          <button type="button" className={`moviescard__delete-btn`}></button>
+        </div>
         <p className="moviescard__duration">
           {getHoursAndMinutes(movie.duration)}
         </p>
-
-        <button
-          type="button"
-          className={`moviescard__like-btn ${
-            movie.isLiked ? " moviescard__like-btn_liked" : ""
-          }`}
-        ></button>
-
-        <button type="button" className={`moviescard__delete-btn`}></button>
       </div>
     </li>
   );

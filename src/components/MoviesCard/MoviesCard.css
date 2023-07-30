@@ -89,3 +89,7 @@
 .moviescard__container:hover .moviescard__delete-btn {
   display: block;
 }
+
+.moviescard__title-container {
+  display: flex;
+}
