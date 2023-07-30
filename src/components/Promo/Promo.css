@@ -19,6 +19,7 @@
   .promo__container {
     padding-top: 300px;
     padding-bottom: 300px;
+    background-position: center bottom 70px;
   }
 }
 
@@ -28,7 +29,7 @@
     padding-top: 50px;
     padding-bottom: 304px;
     background-size: auto;
-    background-position: right 70px bottom 40px;
+    background-position: right 70px bottom 60px;
   }
 }
 
