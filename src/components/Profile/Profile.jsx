@@ -1,11 +1,19 @@
 import "./Profile.css";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const { values, handleChange, errors, isValid } = useFormAndValidation();
+  const navigate = useNavigate();
+
   const onEditProfile = (val) => {
     console.log(val);
   };
+
+  const handleLogoutClick = () => {
+    navigate("/");
+  };
+
   return (
     <section className="profile">
       <h1 className="profile__welcome">Привет, Виталий!</h1>
@@ -75,8 +83,9 @@ const Profile = () => {
           Редактировать
         </button>
         <button
-          type="submit"
+          type="button"
           className="profile-form__button profile-form__button-signout"
+          onClick={handleLogoutClick}
         >
           Выйти из аккаунта
         </button>

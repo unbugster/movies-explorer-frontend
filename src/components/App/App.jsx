@@ -14,7 +14,7 @@ import { Profile } from "../Profile/Profile";
 const App = () => {
   // const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [isBurgerActive, setIsBurgerActive] = useState(false);
-  let location = useLocation();
+  const location = useLocation();
   const headerPaths = ["/", "/movies", "/saved-movies", "/profile"];
   const footerPaths = ["/", "/movies", "/saved-movies"];
 
