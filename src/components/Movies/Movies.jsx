@@ -5,12 +5,14 @@ import { moviesData } from "../../utils/movies";
 
 const Movies = () => {
   return (
-    <section className="movies" aria-label="Галерея фильмов">
-      <div className="movies__container container">
-        <SearchForm />
-        <MoviesCardList movies={moviesData} />
-      </div>
-    </section>
+    <>
+      <SearchForm />
+      <section className="movies" aria-label="Галерея фильмов">
+        <div className="movies__container container">
+          <MoviesCardList movies={moviesData} />
+        </div>
+      </section>
+    </>
   );
 };
 
