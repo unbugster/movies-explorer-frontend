@@ -2,7 +2,6 @@ import classNames from "classnames";
 import { Button } from "../Button";
 import { UserMenu } from "../UserMenu";
 import "./NavLinks.css";
-import { NavLink } from "react-router-dom";
 
 const NavLinks = (props) => {
   const { isBurgerActive, setIsBurgerActive } = props;
@@ -10,49 +9,42 @@ const NavLinks = (props) => {
   const handleLinkClick = () => {
     setIsBurgerActive((v) => !v);
   };
-
   const cls = isBurgerActive ? "nav_opened" : "";
-
-  const activeLinkClass = "nav__link nav__link_active";
-  const inactiveLinkClass = "nav__link nav__link-item";
+  const activeCls = "nav__link_active";
+  const btnCls = `button_header-menu nav__link`;
 
   return (
     <div className={classNames("nav", cls)}>
       <div className="nav__container">
         <div className={classNames("nav__links")}>
-          <NavLink
+          <Button
             to="/"
             onClick={handleLinkClick}
-            className={({ isActive }) =>
-              isActive ? activeLinkClass : inactiveLinkClass
-            }
+            transparent
+            hidden
+            className={btnCls}
+            activeCls={activeCls}
           >
-            <Button transparent hidden className={"button_header-menu"}>
-              Главная
-            </Button>
-          </NavLink>
-          <NavLink
+            Главная
+          </Button>
+          <Button
             to="/movies"
             onClick={handleLinkClick}
-            className={({ isActive }) =>
-              isActive ? activeLinkClass : inactiveLinkClass
-            }
+            transparent
+            className={btnCls}
+            activeCls={activeCls}
           >
-            <Button transparent className={"button_header-menu"}>
-              Фильмы
-            </Button>
-          </NavLink>
-          <NavLink
+            Фильмы
+          </Button>
+          <Button
             to="/saved-movies"
             onClick={handleLinkClick}
-            className={({ isActive }) =>
-              isActive ? activeLinkClass : inactiveLinkClass
-            }
+            transparent
+            className={btnCls}
+            activeCls={activeCls}
           >
-            <Button transparent className={"button_header-menu"}>
-              Сохранённые фильмы
-            </Button>
-          </NavLink>
+            Сохранённые фильмы
+          </Button>
         </div>
 
         <UserMenu

@@ -14,11 +14,14 @@ const UserMenu = (props) => {
     setIsBurgerActive((v) => !v);
   };
   return (
-    <NavLink to="/profile" onClick={handleLinkClick}>
-      <Button transparent className={classNames("user-menu", cls)}>
-        Аккаунт
-      </Button>
-    </NavLink>
+    <Button
+      to="/profile"
+      onClick={handleLinkClick}
+      transparent
+      className={classNames("user-menu", cls)}
+    >
+      Аккаунт
+    </Button>
   );
 };
 

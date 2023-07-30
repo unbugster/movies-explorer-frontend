@@ -1,8 +1,18 @@
 import classNames from "classnames";
 import "./Button.css";
+import { NavLink } from "react-router-dom";
 
 const Button = (props) => {
-  const { round, transparent, children, className, hidden } = props;
+  const {
+    round,
+    transparent,
+    children,
+    className,
+    hidden,
+    to,
+    onClick,
+    activeCls,
+  } = props;
 
   const cls = classNames("button", className, {
     button_transparent: transparent,
@@ -10,7 +20,19 @@ const Button = (props) => {
     button_lg_hidden: hidden,
   });
 
-  return <button className={cls}>{children}</button>;
+  return to ? (
+    <NavLink
+      to={to}
+      className={({ isActive }) => {
+        return `${cls} ${isActive ? activeCls : ""}`;
+      }}
+      onCLick={onClick}
+    >
+      {children}
+    </NavLink>
+  ) : (
+    <button className={cls}>{children}</button>
+  );
 };
 
 export { Button };
