@@ -28,21 +28,9 @@
   width: 100%;
   display: flex;
   align-items: center;
+  flex-direction: column;
   padding-bottom: 10px;
-  border-bottom: 1px #e8e8e8 solid;
-  margin-bottom: 40px;
-}
-
-@media screen and (min-width: 767px) {
-  .search__form {
-    margin-bottom: 32px;
-  }
-}
-
-@media screen and (min-width: 1279px) {
-  .search__form {
-    margin-bottom: 32px;
-  }
+  gap: 40px;
 }
 
 .search__form-input {
@@ -87,4 +75,27 @@
 .search__form-button:focus {
   outline: 2px solid black;
   border-radius: 50px;
+}
+
+.search__filter {
+  width: 100%;
+  display: flex;
+  border-bottom: 1px #e8e8e8 solid;
+  padding-bottom: 15px;
+}
+
+.search__short-films {
+  align-self: center;
+}
+
+@media screen and (min-width: 767px) {
+  .search__short-films {
+    align-self: flex-end;
+  }
+}
+
+@media screen and (min-width: 1279px) {
+  .search__short-films {
+    align-self: flex-start;
+  }
 }

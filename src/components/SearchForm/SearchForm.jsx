@@ -7,18 +7,22 @@ const SearchForm = () => {
     <section className="search">
       <div className="search__container">
         <form className="search__form">
-          <input
-            className="search__form-input"
-            type="search"
-            placeholder="Фильм"
-            required
-          />
+          <div className="search__filter">
+            <input
+              className="search__form-input"
+              type="search"
+              placeholder="Фильм"
+              required
+            />
 
-          <button type="submit" className="search__form-button">
-            <img src={searchIcon} alt="Иконка поиска" />
-          </button>
+            <button type="submit" className="search__form-button">
+              <img src={searchIcon} alt="Иконка поиска" />
+            </button>
+          </div>
+          <div className="search__short-films">
+            <FilterCheckbox />
+          </div>
         </form>
-        <FilterCheckbox />
       </div>
     </section>
   );
