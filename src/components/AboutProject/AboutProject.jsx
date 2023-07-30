@@ -33,9 +33,9 @@ const AboutProject = () => {
         </ul>
 
         <div className="about-project__result">
-          <div className="about-project__result-week about-project__result-week_black">
+          <p className="about-project__result-week about-project__result-week_black">
             1 неделя
-          </div>
+          </p>
           <div className="about-project__result-week">4 недели</div>
           <div className="about-project__result-web">Back-end</div>
           <div className="about-project__result-web">Front-end</div>
