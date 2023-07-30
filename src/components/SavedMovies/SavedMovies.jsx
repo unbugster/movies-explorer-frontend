@@ -1,11 +1,16 @@
 import "./SavedMovies.css";
+import { moviesData } from "../../utils/movies.js";
+import { SearchForm } from "../SearchForm/SearchForm";
+import { MoviesCardList } from "../MoviesCardList/MoviesCardList";
 
-const SavedMovies = ( ) => {
-
+const SavedMovies = () => {
   return (
-    <div className="saved-movies">
-     SavedMovies
-    </div>
+    <section className="saved-movies" aria-label="Галерея сохраненных фильмов">
+      <div className="saved-movies__container container">
+        <SearchForm />
+        <MoviesCardList movies={moviesData} />
+      </div>
+    </section>
   );
 };
 

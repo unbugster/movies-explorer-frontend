@@ -4,6 +4,7 @@ export const moviesData = [
     nameRU: "33 слова о дизайне",
     duration: 107,
     thumbnail: "https://i.ibb.co/yRBbd0f/pic-COLOR-pic.jpg",
+    isLiked: "true",
   },
   {
     movieId: 2,
@@ -70,6 +71,31 @@ export const moviesData = [
   {
     movieId: 12,
     nameRU: "По волнам: Искусство звука в кино",
+    duration: 80,
+    thumbnail: "https://i.ibb.co/GQG1YJ9/pic-COLOR-pic-11.jpg",
+  },
+
+  {
+    movieId: 13,
+    nameRU: "Рудбой",
+    duration: 80,
+    thumbnail: "https://i.ibb.co/yNysSV1/pic-COLOR-pic-10.jpg",
+  },
+  {
+    movieId: 14,
+    nameRU: "Скейт-кухня",
+    duration: 80,
+    thumbnail: "https://i.ibb.co/QQFMRrZ/pic-COLOR-pic-3.jpg",
+  },
+  {
+    movieId: 15,
+    nameRU: "Война искусств",
+    duration: 80,
+    thumbnail: "https://i.ibb.co/rm0cGVc/pic-COLOR-pic-7.jpg",
+  },
+  {
+    movieId: 16,
+    nameRU: "Зона",
     duration: 80,
     thumbnail: "https://i.ibb.co/GQG1YJ9/pic-COLOR-pic-11.jpg",
   },

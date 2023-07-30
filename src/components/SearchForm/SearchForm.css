@@ -30,7 +30,13 @@
   align-items: center;
   padding-bottom: 10px;
   border-bottom: 1px #e8e8e8 solid;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
+}
+
+@media screen and (min-width: 767px) {
+  .search__form {
+    margin-bottom: 32px;
+  }
 }
 
 @media screen and (min-width: 1279px) {

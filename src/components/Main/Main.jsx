@@ -1,11 +1,19 @@
+import { AboutMe } from "../AboutMe";
+import { AboutProject } from "../AboutProject";
+import { Portfolio } from "../Portfolio";
+import { Promo } from "../Promo";
+import { Techs } from "../Techs/Techs";
 import "./Main.css";
 
-const Main = ( ) => {
-
+const Main = () => {
   return (
-    <div className="main">
-     Main
-    </div>
+    <>
+      <Promo />
+      <AboutProject />
+      <Techs />
+      <AboutMe />
+      <Portfolio />
+    </>
   );
 };
 

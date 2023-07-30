@@ -22,6 +22,7 @@
   .promo__container {
     align-items: flex-start;
     padding-top: 50px;
+    padding-bottom: 60px;
   }
 }
 
@@ -72,6 +73,8 @@
 
 @media screen and (min-width: 1279px) {
   .promo__illustration {
+    width: 722px;
+    height: 244px;
     margin-left: auto;
   }
 }

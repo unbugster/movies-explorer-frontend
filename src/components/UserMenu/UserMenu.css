@@ -2,11 +2,24 @@
   border-radius: 20px;
   background: #f9f9f9;
   visibility: hidden;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
 }
 
 @media screen and (min-width: 1279px) {
   .user-menu {
     visibility: visible;
+  }
+}
+
+@media screen and (min-width: 1279px) {
+  .user-menu {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
   }
 }
 

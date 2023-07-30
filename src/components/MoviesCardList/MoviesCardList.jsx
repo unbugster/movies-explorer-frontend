@@ -2,9 +2,16 @@ import "./MoviesCardList.css";
 import { MoviesCard } from "../MoviesCard/MoviesCard";
 import useResize from "../../hooks/useResize.js";
 import { Button } from "../Button/Button";
+import { useLocation } from "react-router-dom";
 
 const MoviesCardList = ({ movies }) => {
   let size = useResize();
+  let location = useLocation();
+
+  movies =
+    location.pathname === "/saved-movies"
+      ? movies.filter((m) => m.isLiked)
+      : movies;
 
   return (
     <>
@@ -21,9 +28,13 @@ const MoviesCardList = ({ movies }) => {
               return <MoviesCard key={movie.movieId} movie={movie} />;
             })}
       </ul>
-      <Button className="button_type_more" btnType="button" transparent>
-        Еще
-      </Button>
+      {location.pathname === "/saved-movies" ? (
+        ""
+      ) : (
+        <Button className="button_type_more" btnType="button" transparent>
+          Еще
+        </Button>
+      )}
     </>
   );
 };

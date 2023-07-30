@@ -45,8 +45,40 @@
   border-radius: 5px;
   align-self: center;
   margin-bottom: 80px;
+  margin-top: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .button_type_more {
+    margin-top: 7px;
+    width: 320px;
+  }
+}
+
+@media screen and (min-width: 1279px) {
+  .button_type_more {
+    margin-top: 10px;
+  }
 }
 
 .button_type_more:hover {
   background-color: #f8f8f8;
+}
+
+.button_header-menu {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 8px 10px;
+  text-decoration: inherit;
+}
+
+@media screen and (min-width: 1279px) {
+  .button_header-menu {
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+  }
 }

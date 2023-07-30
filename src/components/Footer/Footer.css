@@ -68,6 +68,15 @@
   transition: all 0.2s linear;
 }
 
+@media screen and (min-width: 767px) {
+  .footer__link {
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
 .footer__link:hover {
   opacity: 0.7;
 }
