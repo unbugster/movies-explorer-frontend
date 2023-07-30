@@ -48,6 +48,7 @@
   align-items: center;
   gap: 12px;
   margin-bottom: 30px;
+  list-style: none;
 }
 
 @media screen and (min-width: 767px) {
