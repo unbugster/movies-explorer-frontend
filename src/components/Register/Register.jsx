@@ -14,7 +14,7 @@ const Register = () => {
   return (
     <section className="register-page">
       <Link className="register-page__route" to="/">
-        <img className="register-page__logo" src={logo} alt="Лого" />
+        <img className="register-page__logo" src={logo} alt="Логотип" />
       </Link>
       <h1 className="register-page__title">Добро пожаловать!</h1>
       <form

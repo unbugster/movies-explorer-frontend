@@ -8,6 +8,11 @@
   color: #fff;
   padding: 5px 12px;
   cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+.button:hover {
+  opacity: 0.8;
 }
 
 @media screen and (min-width: 768px) {

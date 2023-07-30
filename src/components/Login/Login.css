@@ -73,6 +73,7 @@
 .login-page__link {
   color: #000;
   text-decoration: none;
+  transition: all 0.2s linear;
 }
 
 .login-page__link:hover {
