@@ -15,7 +15,7 @@ const MoviesCardList = ({ movies }) => {
 
   return (
     <>
-      <ul className="movies__list">
+      <ul className="movies-list">
         {size.width <= 450
           ? movies?.slice(0, 5).map((movie) => {
               return <MoviesCard key={movie.movieId} movie={movie} />;

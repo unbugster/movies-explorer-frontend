@@ -1,4 +1,4 @@
-.movies__list {
+.movies-list {
   list-style-type: none;
   display: grid;
   margin: 0;
@@ -10,7 +10,7 @@
 }
 
 @media screen and (min-width: 767px) {
-  .movies__list {
+  .movies-list {
     padding-top: 55px;
     gap: 30px;
     grid-template-columns: repeat(auto-fit, minmax(auto, 339px));
@@ -18,7 +18,7 @@
 }
 
 @media screen and (min-width: 1279px) {
-  .movies__list {
+  .movies-list {
     padding: 0;
     gap: 39px 20px;
     grid-template-columns: repeat(auto-fit, minmax(auto, 270px));

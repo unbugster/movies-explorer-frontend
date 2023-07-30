@@ -3,7 +3,7 @@ import { getHoursAndMinutes } from "../../utils/functions";
 
 const MoviesCard = ({ movie }) => {
   return (
-    <li className="movies__item moviescard">
+    <li className="movies-list__item moviescard">
       <img
         className="moviescard__image"
         src={movie.thumbnail}
