@@ -9,7 +9,7 @@ const Footer = () => {
         </p>
 
         <div className="footer__copyright">
-          <p className="footer__year">&copy; {new Date().getFullYear()}</p>
+          <p className="footer__year">&copy;{new Date().getFullYear()}</p>
           <ul className="footer__links">
             <li>
               <a
