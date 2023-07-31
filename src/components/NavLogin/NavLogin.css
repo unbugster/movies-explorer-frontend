@@ -3,3 +3,7 @@
   gap: 2px;
   flex-wrap: wrap;
 }
+
+.login-menu__link {
+  text-decoration: none;
+}
