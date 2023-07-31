@@ -111,6 +111,10 @@
   outline: none;
 }
 
+.profile-form__input:focus {
+  outline: 1px solid lightgray;
+}
+
 .profile-form__input::placeholder {
   font-weight: 500;
   font-size: 11px;
