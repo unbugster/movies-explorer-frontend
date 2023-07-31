@@ -8,15 +8,9 @@
   line-height: 16px;
   text-decoration: none;
 }
-
 @media screen and (min-width: 1279px) {
   .user-menu {
     visibility: visible;
-  }
-}
-
-@media screen and (min-width: 1279px) {
-  .user-menu {
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
@@ -30,6 +24,13 @@
   bottom: 46px;
   left: 50%;
   transform: translate(-50%, 0);
+  padding: 8px 22px;
+}
+
+@media screen and (min-width: 767px) {
+  .user-menu_position_bottom {
+    bottom: 90px;
+  }
 }
 
 @media screen and (min-width: 1279px) {
@@ -45,14 +46,4 @@
 
 .user-menu_position_right {
   margin-left: auto;
-}
-
-@media screen and (min-width: 1279px) {
-  .user-menu_position_bottom {
-    visibility: visible;
-    position: static;
-    bottom: 0;
-    left: 0;
-    transform: translate(0, 0);
-  }
 }

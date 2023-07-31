@@ -10,11 +10,7 @@ const Burger = (props) => {
   };
 
   return (
-    <div
-      className={classNames("burger", cls)}
-      onClick={handleChange}
-      style={{ color: "red" }}
-    ></div>
+    <div className={classNames("burger", cls)} onClick={handleChange}></div>
   );
 };
 
