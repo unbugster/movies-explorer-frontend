@@ -23,6 +23,15 @@
   }
 }
 
+.login-page__logo {
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+.login-page__logo:hover {
+  opacity: 0.8;
+}
+
 .login-page__route {
   width: 38px;
   height: 38px;

@@ -68,6 +68,11 @@
   margin-bottom: 20px;
   margin-top: auto;
   cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+.not-found__link:hover {
+  opacity: 0.8;
 }
 
 @media screen and (min-width: 767px) {

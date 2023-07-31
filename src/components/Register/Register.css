@@ -21,6 +21,15 @@
   }
 }
 
+.register-page__logo {
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+.register-page__logo:hover {
+  opacity: 0.8;
+}
+
 .register-page__route {
   width: 38px;
   height: 38px;

@@ -72,6 +72,10 @@
   margin: 0 auto;
 }
 
+.profile-form__button:hover {
+  opacity: 0.8;
+}
+
 @media screen and (min-width: 767px) {
   .profile-form__button {
     font-size: 13px;

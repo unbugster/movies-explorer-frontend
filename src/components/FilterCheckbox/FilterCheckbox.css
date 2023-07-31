@@ -62,6 +62,11 @@
   display: block;
   border-radius: 20px;
   position: relative;
+  transition: all 0.2s linear;
+}
+
+.filter-checkbox__label:hover {
+  opacity: 0.8;
 }
 
 .filter-checkbox__label:after {
