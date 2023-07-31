@@ -12,7 +12,11 @@ const MoviesCardList = ({ movies }) => {
     location.pathname === "/saved-movies"
       ? movies.filter((m) => m.isLiked)
       : movies;
-  movies = size.width <= 450 ? movies.slice(0, 2) : movies;
+
+  movies =
+    location.pathname === "/saved-movies" && size.width <= 450
+      ? movies.slice(0, 2)
+      : movies;
 
   return (
     <>
