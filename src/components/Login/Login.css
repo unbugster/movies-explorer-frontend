@@ -147,6 +147,7 @@
 
 @media screen and (min-width: 767px) {
   .login-form__btn {
+    font-size: 14px;
     margin: 150px 0 16px;
   }
 }

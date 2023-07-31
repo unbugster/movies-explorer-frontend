@@ -144,6 +144,7 @@
 
 @media screen and (min-width: 767px) {
   .register-form__btn {
+    font-size: 14px;
     margin-top: 71px;
   }
 }
