@@ -4,7 +4,7 @@ import { FilterCheckbox } from "../FilterCheckbox";
 
 const SearchForm = () => {
   return (
-    <div className="search">
+    <section className="search">
       <div className="search__container container">
         <form className="search__form">
           <div className="search__filter">
@@ -24,7 +24,7 @@ const SearchForm = () => {
           </div>
         </form>
       </div>
-    </div>
+    </section>
   );
 };
 
