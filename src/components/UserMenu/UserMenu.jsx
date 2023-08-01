@@ -10,7 +10,7 @@ const UserMenu = (props) => {
     : "user-menu_position_right";
 
   const handleLinkClick = () => {
-    setIsBurgerActive((v) => !v);
+    setIsBurgerActive(false);
   };
   return (
     <Button
