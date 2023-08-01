@@ -61,8 +61,6 @@ const Register = () => {
             onChange={handleChange}
             type="email"
             placeholder="Введите почту"
-            minLength="2"
-            maxLength="40"
             required
           />
           <span
