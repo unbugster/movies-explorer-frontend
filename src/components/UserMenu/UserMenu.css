@@ -34,7 +34,7 @@
   }
 }
 
-@media screen and (min-width: 1279px) {
+@media screen and (min-width: 769px) {
   .user-menu_position_bottom {
     visibility: visible;
     margin-left: auto;
