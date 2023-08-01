@@ -49,6 +49,10 @@
   line-height: normal;
 }
 
+.search__form-input:focus {
+  outline: 1px solid lightgray;
+}
+
 .search__form-input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
   appearance: none;
