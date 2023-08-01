@@ -14,7 +14,7 @@
   width: 100%;
 }
 
-@media screen and (min-width: 1279px) {
+@media screen and (min-width: 769px) {
   .nav {
     background-color: transparent;
     position: static;
@@ -48,11 +48,6 @@
   .nav__links {
     top: 160px;
     gap: 26px;
-  }
-}
-
-@media screen and (min-width: 1279px) {
-  .nav__links {
     position: static;
     flex-direction: row;
     width: auto;
@@ -60,6 +55,16 @@
     gap: 0;
   }
 }
+
+/* @media screen and (min-width: 1279px) {
+  .nav__links {
+    position: static;
+    flex-direction: row;
+    width: auto;
+    height: auto;
+    gap: 0;
+  }
+} */
 
 .nav__container {
   display: flex;

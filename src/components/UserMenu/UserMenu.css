@@ -8,7 +8,8 @@
   line-height: 16px;
   text-decoration: none;
 }
-@media screen and (min-width: 1279px) {
+
+@media screen and (min-width: 769px) {
   .user-menu {
     visibility: visible;
     font-size: 14px;

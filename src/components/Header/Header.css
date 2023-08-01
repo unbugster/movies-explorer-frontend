@@ -15,12 +15,6 @@
   gap: 10px;
 }
 
-@media screen and (min-width: 1279px) {
-  .header__container {
-    display: flex;
-  }
-}
-
 .header__logo {
   cursor: pointer;
   transition: all 0.2s linear;
