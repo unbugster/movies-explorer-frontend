@@ -7,7 +7,7 @@
   justify-content: flex-start;
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   .register-page {
     max-width: 396px;
     padding: 232px 0 0 0;
@@ -37,7 +37,7 @@
   margin-bottom: 50px;
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   .register-page__route {
     margin-bottom: 40px;
     align-self: flex-start;
@@ -53,7 +53,7 @@
   text-align: center;
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   .register-page__title {
     margin-bottom: 40px;
     text-align: left;
@@ -70,7 +70,7 @@
   text-align: center;
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   .register-page__text {
     font-size: 14px;
     text-align: center;
@@ -142,7 +142,7 @@
   cursor: pointer;
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   .register-form__btn {
     font-size: 14px;
     margin-top: 71px;

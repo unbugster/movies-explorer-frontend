@@ -2,7 +2,7 @@
   padding: 70px 18px;
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   .about-project__container {
     padding: 90px 50px;
   }
@@ -25,7 +25,7 @@
   margin-bottom: 62px;
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   .about-project__list {
     margin-bottom: 93px;
     flex-direction: row;
@@ -50,7 +50,7 @@
   margin-bottom: 16px;
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   .about-project__subtitle {
     font-size: 20px;
     letter-spacing: -0.8px;
@@ -71,7 +71,7 @@
   padding: 0;
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   .about-project__description {
     font-size: 12px;
     line-height: 18px;
@@ -95,7 +95,7 @@
   text-align: center;
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   .about-project__result {
     font-size: 14px;
     line-height: 17px;

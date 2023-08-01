@@ -7,7 +7,7 @@
   min-width: 300px;
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   .moviescard__image {
     margin-bottom: 15px;
     min-width: auto;
@@ -38,7 +38,7 @@
   padding-right: 24px;
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   .moviescard__title {
     font-size: 13px;
     font-style: normal;

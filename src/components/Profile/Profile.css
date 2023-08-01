@@ -6,7 +6,7 @@
   padding-top: 70px;
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   .profile {
     padding-top: 235px;
     max-width: 410px;
@@ -28,7 +28,7 @@
   justify-content: space-between;
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   .profile-form__input-field {
     width: 410px;
   }
@@ -47,7 +47,7 @@
   text-align: center;
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   .profile__welcome {
     margin-bottom: 82px;
   }
@@ -76,7 +76,7 @@
   opacity: 0.8;
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   .profile-form__button {
     font-size: 13px;
   }
@@ -86,7 +86,7 @@
   margin-top: 365px;
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   .profile-form__button-edit {
     margin-top: 197px;
   }

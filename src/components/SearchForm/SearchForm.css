@@ -5,7 +5,7 @@
   box-sizing: border-box;
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   .search {
     row-gap: 10px;
     padding: 80px 0 61px;
@@ -33,7 +33,7 @@
   gap: 40px;
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   .search__form {
     gap: 31px;
   }
@@ -58,7 +58,7 @@
   background-size: 15px 15px;
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   .search__form-input {
     font-size: 28px;
     font-style: normal;
@@ -94,7 +94,7 @@
   align-self: center;
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   .search__short-films {
     align-self: flex-end;
   }

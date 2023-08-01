@@ -7,7 +7,7 @@
   justify-content: flex-start;
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   .login-page {
     max-width: 396px;
     padding: 233px 0 0 0;
@@ -39,7 +39,7 @@
   margin-bottom: 50px;
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   .login-page__route {
     margin-bottom: 40px;
     align-self: flex-start;
@@ -55,7 +55,7 @@
   text-align: center;
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   .login-page__title {
     margin-bottom: 40px;
     text-align: left;
@@ -72,7 +72,7 @@
   text-align: center;
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   .login-page__text {
     font-size: 14px;
     text-align: center;
@@ -145,7 +145,7 @@
   margin: 240px 0 16px;
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   .login-form__btn {
     font-size: 14px;
     margin: 150px 0 16px;
