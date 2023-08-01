@@ -26,7 +26,7 @@ const Button = (props) => {
       className={({ isActive }) => {
         return `${cls} ${isActive ? activeCls : ""}`;
       }}
-      onCLick={onClick}
+      onClick={onClick}
     >
       {children}
     </NavLink>
