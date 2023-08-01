@@ -34,7 +34,7 @@ const MoviesCardList = ({ movies }) => {
             })}
       </ul>
       {location.pathname === "/saved-movies" ? (
-        <div className="movies-list__placeholder"></div>
+        <div className="movies-placeholder"></div>
       ) : (
         <Button className="button_type_more" btnType="button" transparent>
           Еще
