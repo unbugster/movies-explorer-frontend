@@ -30,6 +30,8 @@
 }
 
 .nav__links {
+  margin: 0;
+  padding: 0;
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -37,8 +39,9 @@
   top: 135px;
   right: 0;
   width: 100%;
-  gap: 10px;
+  gap: 15px;
   align-items: center;
+  list-style-type: none;
 }
 
 @media screen and (min-width: 768px) {
