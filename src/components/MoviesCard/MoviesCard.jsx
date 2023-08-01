@@ -11,7 +11,7 @@ const MoviesCard = ({ movie }) => {
       />
       <div className="moviescard__details">
         <div className="moviescard__title-container">
-          <p className="moviescard__title">{movie.nameRU}</p>
+          <h2 className="moviescard__title">{movie.nameRU}</h2>
           <button
             type="button"
             className={`moviescard__like-btn ${
