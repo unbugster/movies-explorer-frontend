@@ -44,6 +44,13 @@
   list-style-type: none;
 }
 
+@media screen and (min-width: 768px) {
+  .nav__links {
+    top: 160px;
+    gap: 26px;
+  }
+}
+
 @media screen and (min-width: 769px) {
   .nav__links {
     top: 160px;
@@ -85,6 +92,15 @@
   text-decoration: none;
 }
 
+@media screen and (min-width: 768px) {
+  .nav__link {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+}
+
 .nav__link_active {
   text-decoration: underline;
   text-underline-offset: 10px;
@@ -94,6 +110,12 @@
   .nav__link_active {
     text-decoration: underline;
     text-underline-offset: 9px;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .nav__link_active {
+    text-decoration: none;
   }
 }
 
