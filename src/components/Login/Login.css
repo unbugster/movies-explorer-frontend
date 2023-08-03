@@ -1,0 +1,196 @@
+.login-page {
+  padding: 56px 0 0 0;
+  max-width: 260px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  justify-content: flex-start;
+}
+
+@media screen and (min-width: 768px) {
+  .login-page {
+    max-width: 396px;
+    padding: 233px 0 0 0;
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 1279px) {
+  .login-page {
+    max-width: 396px;
+    padding: 70px 0 0 0;
+    justify-content: center;
+  }
+}
+
+.login-page__logo {
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+.login-page__logo:hover {
+  opacity: 0.8;
+}
+
+.login-page__route {
+  width: 38px;
+  height: 38px;
+  align-self: center;
+  margin-bottom: 50px;
+}
+
+@media screen and (min-width: 768px) {
+  .login-page__route {
+    margin-bottom: 40px;
+    align-self: flex-start;
+  }
+}
+
+.login-page__title {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0 0 80px;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .login-page__title {
+    margin-bottom: 40px;
+    text-align: left;
+  }
+}
+
+.login-page__text {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 30px;
+  color: #a0a0a0;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .login-page__text {
+    font-size: 14px;
+    text-align: center;
+  }
+}
+
+.login-page__link {
+  color: #000;
+  text-decoration: none;
+  transition: all 0.2s linear;
+}
+
+.login-page__link:hover {
+  opacity: 0.7;
+}
+
+.login-form__input {
+  box-sizing: border-box;
+  display: block;
+  border: none;
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 23px;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  outline: none;
+  color: #000;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+
+.login-form__input_type_pass {
+  color: #ff4062;
+}
+
+.login-form__input::placeholder {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+}
+
+.login-form__input:focus-visible {
+  box-shadow: 0 1px 0 0 #000;
+}
+
+.login-form__label {
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  display: block;
+  color: #a0a0a0;
+  margin-bottom: 10px;
+}
+
+.login-form__btn {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  width: 100%;
+  background: #000;
+  border-radius: 3px;
+  border: 0;
+  color: #fff;
+  min-height: 45px;
+  cursor: pointer;
+  margin: 240px 0 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .login-form__btn {
+    font-size: 14px;
+    margin: 150px 0 16px;
+  }
+}
+
+@media screen and (min-width: 1279px) {
+  .login-form__btn {
+    margin-top: 153px;
+  }
+}
+
+.login-form__btn:hover {
+  opacity: 0.8;
+}
+
+.login-form__btn:disabled {
+  background-color: #f8f8f8;
+  color: #c2c2c2;
+}
+
+.login-form__input-field {
+  position: relative;
+}
+
+.login-form__input-error {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  position: absolute;
+  margin: -18px 0;
+  max-width: 396px;
+}
+
+.login-form__api-error {
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  position: absolute;
+  margin: -18px 0;
+  max-width: 396px;
+  color: #ff4062;
+}
+
+.login-form__input-error_active {
+  color: #ff4062;
+}

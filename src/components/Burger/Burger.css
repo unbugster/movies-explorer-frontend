@@ -1,0 +1,42 @@
+.burger {
+  visibility: visible;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.burger:hover {
+  opacity: 0.8;
+}
+
+@media screen and (min-width: 769px) {
+  .burger {
+    visibility: hidden;
+    display: none;
+  }
+}
+
+.burger_active {
+  width: 26px;
+  height: 26px;
+  background: url("../../images/header_burger_active.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .burger_active {
+    top: 25px;
+    right: 25px;
+  }
+}
+
+.burger_inactive {
+  width: 40px;
+  height: 43px;
+  background: url("../../images/header_burger_inactive.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}

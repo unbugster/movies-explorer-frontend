@@ -1,0 +1,46 @@
+.page {
+  box-sizing: border-box;
+  font-family: "Inter", "Arial", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  font-size: 11px;
+  line-height: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+  .page {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (min-width: 1279px) {
+  .page {
+    font-size: 14px;
+    line-height: 22px;
+  }
+}
+
+.container {
+  padding: 0 14px;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding: 0 30px;
+  }
+}
+
+@media screen and (min-width: 1279px) {
+  .container {
+    max-width: 1140px;
+    padding: 0 70px;
+  }
+}

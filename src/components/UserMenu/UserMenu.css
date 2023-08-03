@@ -1,0 +1,50 @@
+.user-menu {
+  border-radius: 20px;
+  background: #f9f9f9;
+  visibility: hidden;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  text-decoration: none;
+}
+
+@media screen and (min-width: 769px) {
+  .user-menu {
+    visibility: visible;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+  }
+}
+
+.user-menu_position_bottom {
+  visibility: visible;
+  position: absolute;
+  bottom: 46px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  padding: 8px 22px;
+}
+
+@media screen and (min-width: 768px) {
+  .user-menu_position_bottom {
+    bottom: 90px;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .user-menu_position_bottom {
+    visibility: visible;
+    margin-left: auto;
+    position: static;
+    bottom: 0;
+    left: 0%;
+    transform: translate(0, 0);
+  }
+}
+
+.user-menu_position_right {
+  margin-left: auto;
+}
