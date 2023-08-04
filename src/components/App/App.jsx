@@ -10,6 +10,7 @@ import { Main } from "../Main";
 import { Register } from "../Register/Register";
 import { Login } from "../Login/Login";
 import { Profile } from "../Profile/Profile";
+// import { auth } from "../../utils/Auth";
 
 const App = () => {
   // const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -19,6 +20,13 @@ const App = () => {
   const footerPaths = ["/", "/movies", "/saved-movies"];
 
   const isLoggedIn = location.pathname === "/" ? false : true;
+
+  // useEffect(() => {
+  //   auth
+  //     .authorize("abcde@mail.ru", "12ff345ff678")
+  //     .then((res) => console.log(res))
+  //     .catch((err) => console.log(err));
+  // }, []);
 
   useEffect(() => {
     if (isBurgerActive) {
