@@ -1,7 +1,7 @@
 import "./MoviesCardList.css";
-import { MoviesCard } from "../MoviesCard/MoviesCard";
+import { MoviesCard } from "../MoviesCard";
 import useResize from "../../hooks/useResize.js";
-import { Button } from "../Button/Button";
+import { Button } from "../Button";
 import { useLocation } from "react-router-dom";
 
 const MoviesCardList = ({ movies }) => {

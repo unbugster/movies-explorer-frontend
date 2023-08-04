@@ -31,7 +31,7 @@ const Button = (props) => {
       {children}
     </NavLink>
   ) : (
-    <button type="button" className={cls}>
+    <button type="button" className={cls} onClick={onClick}>
       {children}
     </button>
   );

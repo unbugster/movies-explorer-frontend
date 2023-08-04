@@ -109,3 +109,16 @@
     align-self: flex-start;
   }
 }
+
+.search__form-input_error {
+  display: block;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #ff4062;
+  min-height: 20px;
+  align-self: flex-start;
+}
