@@ -5,7 +5,7 @@ import "./Movies.css";
 import { Preloader } from "../Preloader";
 
 const Movies = (props) => {
-  const { movies } = props;
+  const { movies, isError } = props;
   const [isLoading, setIsLoading] = useState(false);
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [notFound, setNotFound] = useState(false);
@@ -41,9 +41,16 @@ const Movies = (props) => {
       <section className="movies" aria-label="Галерея фильмов">
         <div className="movies__container container">
           {isLoading && <Preloader />}
-          {!isLoading && <MoviesCardList movies={filteredMovies} />}
-          {!isLoading && notFound && (
+          {!isLoading && !isError && <MoviesCardList movies={filteredMovies} />}
+          {!isLoading && !isError && notFound && (
             <p className="movies__not-found">Ничего не найдено</p>
+          )}
+          {isError && (
+            <p className="movies__error">
+              Во время запроса произошла ошибка. Возможно, проблема с
+              соединением или сервер недоступен. Подождите немного и попробуйте
+              ещё раз
+            </p>
           )}
         </div>
       </section>

@@ -6,3 +6,7 @@
 .movies__not-found {
   text-align: center;
 }
+
+.movies__error {
+  text-align: center;
+}
