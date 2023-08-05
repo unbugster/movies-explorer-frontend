@@ -1,12 +1,24 @@
-import "./Register.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
+import "./Register.css";
 import logo from "../../images/logo.svg";
 import { Button } from "../Button";
-
+import { validateEmail, validateName } from "../../utils/validation";
 const Register = (props) => {
-  const { onRegister } = props;
+  const { onRegister, isLoggedIn } = props;
   const { values, handleChange, errors, isValid } = useFormAndValidation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/movies");
+    }
+  }, [isLoggedIn]);
+
+  const nameError = validateName(values.name);
+  const emailError = validateEmail(values.email);
+  const btnDisabled = !isValid || nameError || emailError;
 
   return (
     <section className="register-page">
@@ -33,7 +45,6 @@ const Register = (props) => {
             onChange={handleChange}
             type="text"
             placeholder="Введите имя"
-            minLength="2"
             maxLength="40"
             required
           />
@@ -42,7 +53,7 @@ const Register = (props) => {
               isValid ? "" : "register-form__input-error_active"
             }`}
           >
-            {errors.name}
+            {nameError}
           </span>
         </div>
 
@@ -65,7 +76,7 @@ const Register = (props) => {
               isValid ? "" : "register-form__input-error_active"
             }`}
           >
-            {errors.email}
+            {emailError}
           </span>
         </div>
 
@@ -92,14 +103,12 @@ const Register = (props) => {
           >
             {errors.password}
           </span>
-          <span className="register-form__api-error">
-            Что-то пошло не так...
-          </span>
+          <span className="register-form__api-error"></span>
         </div>
         <Button
           type="submit"
           className="register-form__btn"
-          disabled={!isValid}
+          disabled={btnDisabled}
         >
           Зарегистрироваться
         </Button>

@@ -1,11 +1,24 @@
 import "./Login.css";
 import logo from "../../images/logo.svg";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { validateEmail } from "../../utils/validation";
+import { Button } from "../Button";
 
 const Login = (props) => {
-  const { onLogin } = props;
+  const { onLogin, isLoggedIn } = props;
   const { values, handleChange, errors, isValid } = useFormAndValidation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/movies");
+    }
+  }, [isLoggedIn]);
+
+  const emailError = validateEmail(values.email);
+  const btnDisabled = !isValid || emailError;
 
   return (
     <section className="login-page">
@@ -40,7 +53,7 @@ const Login = (props) => {
               isValid ? "" : "login-form__input-error_active"
             }`}
           >
-            {errors.email}
+            {emailError}
           </span>
         </div>
 
@@ -69,9 +82,13 @@ const Login = (props) => {
           </span>
         </div>
 
-        <button type="submit" className="login-form__btn">
+        <Button
+          type="submit"
+          className="login-form__btn"
+          disabled={btnDisabled}
+        >
           Войти
-        </button>
+        </Button>
 
         <div className="login-page__text">
           <span>Ещё не зарегистрированы? </span>

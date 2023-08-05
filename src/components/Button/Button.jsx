@@ -13,6 +13,7 @@ const Button = (props) => {
     to,
     onClick,
     activeCls,
+    disabled,
   } = props;
 
   const cls = classNames("button", className, {
@@ -32,7 +33,7 @@ const Button = (props) => {
       {children}
     </NavLink>
   ) : (
-    <button type={type} className={cls} onClick={onClick}>
+    <button disabled={disabled} type={type} className={cls} onClick={onClick}>
       {children}
     </button>
   );

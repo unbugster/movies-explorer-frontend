@@ -20,7 +20,7 @@ const App = () => {
   const footerPaths = ["/", "/movies", "/saved-movies"];
   const [movies, setMovies] = useState([]);
   const [isError, setIsError] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const navigate = useNavigate();
 
@@ -96,9 +96,14 @@ const App = () => {
           <Route path="/" element={<Main />} />
           <Route
             path="/signup"
-            element={<Register onRegister={handleRegister} />}
+            element={
+              <Register onRegister={handleRegister} isLoggedIn={isLoggedIn} />
+            }
           />
-          <Route path="/signin" element={<Login onLogin={handleLogin} />} />
+          <Route
+            path="/signin"
+            element={<Login onLogin={handleLogin} isLoggedIn={isLoggedIn} />}
+          />
           <Route
             path="/movies"
             element={<Movies movies={movies} isError={isError} />}

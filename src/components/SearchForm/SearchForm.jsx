@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 const SearchForm = (props) => {
   const { onFilter } = props;
   const [searchText, setSearchText] = useState(() => {
-    return localStorage.getItem("searchQuery");
+    return localStorage.getItem("searchQuery") || "";
   });
   const [isEmpty, setIsEmpty] = useState(true);
   const [isShort, setIsShort] = useState(() => {
