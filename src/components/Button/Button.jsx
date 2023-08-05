@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 
 const Button = (props) => {
   const {
+    type,
     round,
     transparent,
     children,
@@ -31,7 +32,7 @@ const Button = (props) => {
       {children}
     </NavLink>
   ) : (
-    <button type="button" className={cls} onClick={onClick}>
+    <button type={type} className={cls} onClick={onClick}>
       {children}
     </button>
   );

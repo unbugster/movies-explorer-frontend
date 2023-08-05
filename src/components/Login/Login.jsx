@@ -3,11 +3,9 @@ import logo from "../../images/logo.svg";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 import { Link } from "react-router-dom";
 
-const Login = () => {
+const Login = (props) => {
+  const { onLogin } = props;
   const { values, handleChange, errors, isValid } = useFormAndValidation();
-  const onLogin = (val) => {
-    console.log(val);
-  };
 
   return (
     <section className="login-page">

@@ -4,12 +4,9 @@ import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 import logo from "../../images/logo.svg";
 import { Button } from "../Button";
 
-const Register = () => {
+const Register = (props) => {
+  const { onRegister } = props;
   const { values, handleChange, errors, isValid } = useFormAndValidation();
-
-  const onRegister = (val) => {
-    console.log(val);
-  };
 
   return (
     <section className="register-page">

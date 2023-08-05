@@ -11,6 +11,7 @@ import { Register } from "../Register/Register";
 import { Login } from "../Login/Login";
 import { Profile } from "../Profile/Profile";
 import { apiBeatfilmMoviesData } from "../../utils/MoviesApi";
+import { auth } from "../../utils/Auth";
 
 const App = () => {
   const location = useLocation();
@@ -20,6 +21,8 @@ const App = () => {
   const [movies, setMovies] = useState([]);
   const [isError, setIsError] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isBurgerActive) {
@@ -50,6 +53,32 @@ const App = () => {
     }
   }, [isLoggedIn]);
 
+  const handleLogin = (values) => {
+    auth
+      .authorize(values.email, values.password)
+      .then((data) => {
+        if (data.token) {
+          localStorage.setItem("jwt", data.token);
+          setIsLoggedIn(true);
+          navigate("/movies");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleRegister = (values) => {
+    auth
+      .register(values.name, values.email, values.password)
+      .then((res) => {
+        handleLogin(values);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className="page">
       {headerPaths.includes(location.pathname) ? (
@@ -65,8 +94,11 @@ const App = () => {
       <main>
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="/signup" element={<Register />} />
-          <Route path="/signin" element={<Login />} />
+          <Route
+            path="/signup"
+            element={<Register onRegister={handleRegister} />}
+          />
+          <Route path="/signin" element={<Login onLogin={handleLogin} />} />
           <Route
             path="/movies"
             element={<Movies movies={movies} isError={isError} />}
