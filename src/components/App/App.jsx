@@ -12,30 +12,14 @@ import { Login } from "../Login/Login";
 import { Profile } from "../Profile/Profile";
 import { apiBeatfilmMoviesData } from "../../utils/MoviesApi";
 
-// test1
-// import { auth } from "../../utils/Auth";
-
 const App = () => {
-  // const [isLoggedIn, setIsLoggedIn] = useState(true);
   const location = useLocation();
-  const navigate = useNavigate();
   const [isBurgerActive, setIsBurgerActive] = useState(false);
   const headerPaths = ["/", "/movies", "/saved-movies", "/profile"];
   const footerPaths = ["/", "/movies", "/saved-movies"];
   const [movies, setMovies] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
   const [isError, setIsError] = useState(false);
-
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-
-  // test1
-  // useEffect(() => {
-  //   auth
-  //     .authorize("abcde@mail.ru", "12ff345ff678")
-  //     .then((res) => console.log(res))
-  //     .catch((err) => console.log(err));
-  // }, []);
 
   useEffect(() => {
     if (isBurgerActive) {
@@ -47,8 +31,10 @@ const App = () => {
 
   useEffect(() => {
     if (isLoggedIn) {
-      if (localStorage.getItem("movies")) {
-        setMovies(JSON.parse(localStorage.getItem("movies")));
+      const storedMovies = localStorage.getItem("movies");
+
+      if (storedMovies) {
+        setMovies(JSON.parse(storedMovies));
       } else {
         apiBeatfilmMoviesData
           .getMovies()
