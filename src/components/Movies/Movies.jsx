@@ -8,6 +8,7 @@ const Movies = (props) => {
   const { movies } = props;
   const [isLoading, setIsLoading] = useState(false);
   const [filteredMovies, setFilteredMovies] = useState([]);
+  const [notFound, setNotFound] = useState(false);
 
   const filterMovies = useCallback(
     (query, isShort) => {
@@ -18,6 +19,7 @@ const Movies = (props) => {
         );
       });
 
+      setNotFound(query && !filtered.length);
       setFilteredMovies(filtered);
 
       setTimeout(() => {
@@ -38,10 +40,10 @@ const Movies = (props) => {
       <SearchForm onFilter={filterMovies} />
       <section className="movies" aria-label="Галерея фильмов">
         <div className="movies__container container">
-          {isLoading ? (
-            <Preloader />
-          ) : (
-            <MoviesCardList movies={filteredMovies} />
+          {isLoading && <Preloader />}
+          {!isLoading && <MoviesCardList movies={filteredMovies} />}
+          {!isLoading && notFound && (
+            <p className="movies__not-found">Ничего не найдено</p>
           )}
         </div>
       </section>
