@@ -1,5 +1,4 @@
 import "./SavedMovies.css";
-import { moviesData } from "../../utils/movies.js";
 import { SearchForm } from "../SearchForm/SearchForm";
 import { MoviesCardList } from "../MoviesCardList/MoviesCardList";
 
@@ -12,7 +11,7 @@ const SavedMovies = () => {
         aria-label="Галерея сохраненных фильмов"
       >
         <div className="saved-movies__container container">
-          <MoviesCardList movies={moviesData} />
+          <MoviesCardList movies={"saved-movies"} />
         </div>
       </section>
     </>

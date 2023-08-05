@@ -1,4 +1,4 @@
-import { apiBeatfilmMoviesDataUrl } from "../config";
+import { apiBeatfilmMoviesDataUrl } from "./config";
 
 const defaultHeaders = {
   "Content-Type": "application/json",
@@ -6,8 +6,8 @@ const defaultHeaders = {
 
 class MoviesApi {
   constructor({ url, headers }) {
-    this.url = url;
-    this.headers = { ...defaultHeaders, ...headers };
+    this._url = url;
+    this._headers = { ...defaultHeaders, ...headers };
   }
 
   _checkResponse(res) {

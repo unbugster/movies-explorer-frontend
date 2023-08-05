@@ -5,6 +5,7 @@
   width: 100%;
   margin-bottom: 10px;
   min-width: 300px;
+  height: 168px;
 }
 
 @media screen and (min-width: 768px) {
@@ -16,7 +17,7 @@
 
 @media screen and (min-width: 1279px) {
   .moviescard__image {
-    height: auto;
+    height: 151px;
   }
 }
 

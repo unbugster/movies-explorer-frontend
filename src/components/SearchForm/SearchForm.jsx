@@ -1,11 +1,13 @@
 import "./SearchForm.css";
 import searchIcon from "../../images/movies_search.svg";
 import { FilterCheckbox } from "../FilterCheckbox";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const SearchForm = () => {
+const SearchForm = (props) => {
+  const { onFilter } = props;
   const [searchText, setSearchText] = useState("");
   const [isEmpty, setIsEmpty] = useState(true);
+  const [isShort, setIsShort] = useState(false);
 
   const handleChange = (evt) => {
     setSearchText(evt.target.value);
@@ -18,6 +20,14 @@ const SearchForm = () => {
       return;
     }
   };
+
+  const handleShortToggle = () => {
+    setIsShort((v) => !v);
+  };
+
+  useEffect(() => {
+    onFilter(searchText, isShort);
+  }, [onFilter, searchText, isShort]);
 
   return (
     <section className="search">
@@ -45,7 +55,7 @@ const SearchForm = () => {
             {!isEmpty && "Нужно ввести ключевое слово"}
           </span>
           <div className="search__short-films">
-            <FilterCheckbox />
+            <FilterCheckbox checked={isShort} onChange={handleShortToggle} />
           </div>
         </form>
       </div>
