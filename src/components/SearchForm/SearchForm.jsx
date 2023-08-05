@@ -5,9 +5,14 @@ import { useEffect, useState } from "react";
 
 const SearchForm = (props) => {
   const { onFilter } = props;
-  const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState(() => {
+    return localStorage.getItem("searchQuery");
+  });
   const [isEmpty, setIsEmpty] = useState(true);
-  const [isShort, setIsShort] = useState(false);
+  const [isShort, setIsShort] = useState(() => {
+    const value = localStorage.getItem("isShort");
+    return !value || value === "false" ? false : true;
+  });
 
   const handleChange = (evt) => {
     setSearchText(evt.target.value);
@@ -27,6 +32,8 @@ const SearchForm = (props) => {
 
   useEffect(() => {
     onFilter(searchText, isShort);
+    localStorage.setItem("searchQuery", searchText);
+    localStorage.setItem("isShort", isShort);
   }, [onFilter, searchText, isShort]);
 
   return (
