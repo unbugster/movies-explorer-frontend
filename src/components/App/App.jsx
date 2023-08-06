@@ -13,6 +13,8 @@ import { Profile } from "../Profile/Profile";
 import { apiBeatfilmMoviesData } from "../../utils/MoviesApi";
 import { auth } from "../../utils/Auth";
 
+import { MainApi } from "../../utils/MainApi";
+
 const App = () => {
   const location = useLocation();
   const [isBurgerActive, setIsBurgerActive] = useState(false);
@@ -21,6 +23,7 @@ const App = () => {
   const [movies, setMovies] = useState([]);
   const [isError, setIsError] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState({});
 
   const navigate = useNavigate();
 
@@ -79,6 +82,20 @@ const App = () => {
       });
   };
 
+  useEffect(() => {
+    const apiDataMain = new MainApi({ url: "http://localhost:3100" });
+
+    apiDataMain
+      .getUserData()
+      .then((user) => {
+        setCurrentUser(user);
+        setIsLoggedIn(true);
+      })
+      .catch((error) => {
+        console.log(`Что-то пошло не так... (${error})`);
+      });
+  }, []);
+
   return (
     <div className="page">
       {headerPaths.includes(location.pathname) ? (
@@ -109,7 +126,10 @@ const App = () => {
             element={<Movies movies={movies} isError={isError} />}
           />
           <Route path="/saved-movies" element={<SavedMovies />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route
+            path="/profile"
+            element={<Profile currentUser={currentUser} />}
+          />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>

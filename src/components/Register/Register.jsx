@@ -14,7 +14,7 @@ const Register = (props) => {
     if (isLoggedIn) {
       navigate("/movies");
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn, navigate]);
 
   const nameError = validateName(values.name);
   const emailError = validateEmail(values.email);

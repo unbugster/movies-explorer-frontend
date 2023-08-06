@@ -20,23 +20,23 @@ export class MainApi {
   }
 
   getUserData() {
-    return fetch(`${this.url}/users/me`, {
-      headers: this.headers,
+    return fetch(`${this._url}/users/me`, {
+      headers: this._headers,
       method: "GET",
     }).then((res) => this._checkResponse(res));
   }
 
   editUserData(data) {
-    return fetch(`${this.url}/users/me`, {
-      headers: this.headers,
+    return fetch(`${this._url}/users/me`, {
+      headers: this._headers,
       method: "PATCH",
       body: JSON.stringify(data),
     }).then((res) => this._checkResponse(res));
   }
 
   getSavedMovies() {
-    return fetch(`${this.url}/movies`, {
-      headers: this.headers,
+    return fetch(`${this._url}/movies`, {
+      headers: this._headers,
       method: "GET",
     }).then((res) => this._checkResponse(res));
   }
