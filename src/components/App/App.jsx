@@ -82,6 +82,22 @@ const App = () => {
       });
   };
 
+  const handleEditProfile = (user) => {
+    const apiDataMain = new MainApi({ url: "http://localhost:3100" });
+    apiDataMain
+      .editUserData(user)
+      .then(() => {
+        setCurrentUser({
+          ...currentUser,
+          name: user.name,
+          email: user.email,
+        });
+      })
+      .catch((err) => {
+        console.log(`Что-то пошло не так: ${err}`);
+      });
+  };
+
   useEffect(() => {
     const apiDataMain = new MainApi({ url: "http://localhost:3100" });
 
@@ -128,7 +144,12 @@ const App = () => {
           <Route path="/saved-movies" element={<SavedMovies />} />
           <Route
             path="/profile"
-            element={<Profile currentUser={currentUser} />}
+            element={
+              <Profile
+                currentUser={currentUser}
+                onEditProfile={handleEditProfile}
+              />
+            }
           />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

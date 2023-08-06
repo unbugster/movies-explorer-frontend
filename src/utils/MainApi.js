@@ -30,7 +30,7 @@ export class MainApi {
     return fetch(`${this._url}/users/me`, {
       headers: this._headers,
       method: "PATCH",
-      body: JSON.stringify(data),
+      body: JSON.stringify({ email: data.email, name: data.name }),
     }).then((res) => this._checkResponse(res));
   }
 

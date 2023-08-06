@@ -1,29 +1,45 @@
 import "./Profile.css";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Button } from "../Button";
+import { validateEmail, validateName } from "../../utils/validation";
 
-const Profile = () => {
-  const { values, handleChange, errors, isValid } = useFormAndValidation();
+const Profile = (props) => {
+  const { currentUser, onEditProfile } = props;
+  const { values, handleChange, errors, isValid, setValues, setIsValid } =
+    useFormAndValidation();
+
+  const handleEditClick = (evt) => {
+    evt.preventDefault();
+  };
+
+  const onSubmit = (evt) => {
+    evt.preventDefault();
+    onEditProfile(values);
+  };
+
   const navigate = useNavigate();
 
-  const onEditProfile = (val) => {
-    console.log(val);
-  };
+  useEffect(() => {
+    if (currentUser) {
+      setValues(currentUser);
+      setIsValid(true);
+    }
+  }, [currentUser, setIsValid, setValues]);
 
   const handleLogoutClick = () => {
     navigate("/");
   };
 
+  const nameError = validateName(values.name);
+  const emailError = validateEmail(values.email);
+  const btnDisabled = !isValid || nameError || emailError;
+
   return (
     <section className="profile">
-      <h1 className="profile__welcome">Привет, Виталий!</h1>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          onEditProfile(values);
-        }}
-        className="profile-form"
-      >
+      <h1 className="profile__welcome">Привет, {currentUser.name}!</h1>
+      <form onSubmit={onSubmit} className="profile-form">
         <div className="profile-form__input-field">
           <label className="profile-form__label" htmlFor="user-name-input">
             Имя
@@ -32,12 +48,10 @@ const Profile = () => {
             className="profile-form__input"
             id="user-name-input"
             name="name"
-            value="Виталий"
-            // value={values.name || ''}
+            value={values.name || ""}
             onChange={handleChange}
             type="text"
             placeholder="Введите имя"
-            minLength="2"
             maxLength="40"
             required
           />
@@ -46,7 +60,7 @@ const Profile = () => {
               isValid ? "" : "profile-form__input-error_active"
             }`}
           >
-            {errors.name}
+            {nameError}
           </span>
         </div>
 
@@ -58,8 +72,7 @@ const Profile = () => {
             className="profile-form__input"
             id="user-email-input"
             name="email"
-            value="pochta@yandex.ru"
-            // value={values.email || ''}
+            value={values.email || ""}
             onChange={handleChange}
             type="email"
             placeholder="Введите почту"
@@ -70,16 +83,30 @@ const Profile = () => {
               isValid ? "" : "profile-form__input-error_active"
             }`}
           >
-            {errors.email}
+            {emailError}
           </span>
         </div>
 
-        <button
+        <span className="profile-form__success-message">
+          Данные успешно обновлены!
+        </span>
+
+        <Button
           type="submit"
+          className="profile-form__button profile-form__button-save"
+          disabled={btnDisabled}
+        >
+          Сохранить
+        </Button>
+
+        <Button
+          type="button"
           className="profile-form__button profile-form__button-edit"
+          onClick={handleEditClick}
         >
           Редактировать
-        </button>
+        </Button>
+
         <button
           type="button"
           className="profile-form__button profile-form__button-signout"
