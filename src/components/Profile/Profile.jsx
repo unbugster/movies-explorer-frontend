@@ -6,7 +6,7 @@ import { Button } from "../Button";
 import { validateEmail, validateName } from "../../utils/validation";
 
 const Profile = (props) => {
-  const { currentUser, onEditProfile, state, setState } = props;
+  const { currentUser, onEditProfile, state, setState, setIsLoggedIn } = props;
   const { values, handleChange, isValid, setValues, setIsValid } =
     useFormAndValidation();
   const inputNameRef = useRef();
@@ -37,7 +37,9 @@ const Profile = (props) => {
   }, [currentUser, setIsValid, setValues]);
 
   const handleLogoutClick = () => {
+    localStorage.clear();
     navigate("/");
+    setIsLoggedIn(false);
   };
   const nameError = validateName(values.name);
   const emailError = validateEmail(values.email);

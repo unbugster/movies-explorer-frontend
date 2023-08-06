@@ -15,7 +15,7 @@ const Login = (props) => {
     if (isLoggedIn) {
       navigate("/movies");
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn, navigate]);
 
   const emailError = validateEmail(values.email);
   const btnDisabled = !isValid || emailError;
