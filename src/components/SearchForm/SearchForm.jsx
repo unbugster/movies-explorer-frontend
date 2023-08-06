@@ -1,28 +1,30 @@
 import "./SearchForm.css";
 import searchIcon from "../../images/movies_search.svg";
 import { FilterCheckbox } from "../FilterCheckbox";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const SearchForm = (props) => {
   const { onFilter } = props;
-  const [searchText, setSearchText] = useState(() => {
-    return localStorage.getItem("searchQuery") || "";
-  });
-  const [isEmpty, setIsEmpty] = useState(true);
+  const searchText = useRef(localStorage.getItem("searchQuery") || "");
+  const inputRef = useRef();
+  const [submitTime, setSubmitTime] = useState(null);
+  const [showSearchMessage, setShowSearchMessage] = useState(null);
   const [isShort, setIsShort] = useState(() => {
     const value = localStorage.getItem("isShort");
     return !value || value === "false" ? false : true;
   });
 
   const handleChange = (evt) => {
-    setSearchText(evt.target.value);
+    searchText.current = evt.target.value;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!searchText) {
-      setIsEmpty(false);
-      return;
+    setSubmitTime(Date.now());
+    if (!searchText.current) {
+      setShowSearchMessage(true);
+    } else {
+      setShowSearchMessage(false);
     }
   };
 
@@ -31,10 +33,15 @@ const SearchForm = (props) => {
   };
 
   useEffect(() => {
-    onFilter(searchText, isShort);
-    localStorage.setItem("searchQuery", searchText);
+    onFilter(searchText.current, isShort);
+    localStorage.setItem("searchQuery", searchText.current);
     localStorage.setItem("isShort", isShort);
-  }, [onFilter, searchText, isShort]);
+  }, [onFilter, isShort, submitTime]);
+
+  useEffect(() => {
+    inputRef.current.value = searchText.current;
+    inputRef.current.focus();
+  }, []);
 
   return (
     <section className="search">
@@ -46,9 +53,9 @@ const SearchForm = (props) => {
         >
           <div className="search__filter">
             <input
+              ref={inputRef}
               className="search__form-input"
               placeholder="Фильм"
-              value={searchText || ""}
               onChange={handleChange}
               name="search"
               min="1"
@@ -59,7 +66,7 @@ const SearchForm = (props) => {
             </button>
           </div>
           <span className="search__form-input_error">
-            {!isEmpty && "Нужно ввести ключевое слово"}
+            {showSearchMessage && "Нужно ввести ключевое слово"}
           </span>
           <div className="search__short-films">
             <FilterCheckbox checked={isShort} onChange={handleShortToggle} />
