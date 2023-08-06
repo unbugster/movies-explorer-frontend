@@ -21,9 +21,9 @@ const App = () => {
   const headerPaths = ["/", "/movies", "/saved-movies", "/profile"];
   const footerPaths = ["/", "/movies", "/saved-movies"];
   const [movies, setMovies] = useState([]);
-  const [isError, setIsError] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
+  const [apiError, setApiError] = useState("");
 
   const [state, setState] = useState("default");
 
@@ -51,8 +51,7 @@ const App = () => {
             setMovies(movies);
           })
           .catch((err) => {
-            setIsError(true);
-            console.log(`Что-то пошло не так: ${err}`);
+            setApiError(err);
           });
       }
     }
@@ -68,8 +67,8 @@ const App = () => {
           navigate("/movies");
         }
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        setApiError(err);
       });
   };
 
@@ -79,8 +78,8 @@ const App = () => {
       .then((res) => {
         handleLogin(values);
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        setApiError(err);
       });
   };
 
@@ -97,8 +96,8 @@ const App = () => {
         setState("success");
       })
       .catch((err) => {
+        setApiError(err);
         setState("error");
-        console.log(`Что-то пошло не так: ${err}`);
       });
   };
 
@@ -134,16 +133,26 @@ const App = () => {
           <Route
             path="/signup"
             element={
-              <Register onRegister={handleRegister} isLoggedIn={isLoggedIn} />
+              <Register
+                onRegister={handleRegister}
+                isLoggedIn={isLoggedIn}
+                apiError={apiError}
+              />
             }
           />
           <Route
             path="/signin"
-            element={<Login onLogin={handleLogin} isLoggedIn={isLoggedIn} />}
+            element={
+              <Login
+                onLogin={handleLogin}
+                isLoggedIn={isLoggedIn}
+                apiError={apiError}
+              />
+            }
           />
           <Route
             path="/movies"
-            element={<Movies movies={movies} isError={isError} />}
+            element={<Movies movies={movies} apiError={apiError} />}
           />
           <Route path="/saved-movies" element={<SavedMovies />} />
           <Route
@@ -154,6 +163,7 @@ const App = () => {
                 setState={setState}
                 currentUser={currentUser}
                 onEditProfile={handleEditProfile}
+                apiError={apiError}
               />
             }
           />

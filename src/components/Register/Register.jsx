@@ -6,7 +6,7 @@ import logo from "../../images/logo.svg";
 import { Button } from "../Button";
 import { validateEmail, validateName } from "../../utils/validation";
 const Register = (props) => {
-  const { onRegister, isLoggedIn } = props;
+  const { onRegister, isLoggedIn, apiError } = props;
   const { values, handleChange, errors, isValid } = useFormAndValidation();
   const navigate = useNavigate();
 
@@ -105,6 +105,11 @@ const Register = (props) => {
           </span>
           <span className="register-form__api-error"></span>
         </div>
+        {apiError && (
+          <span className="register-form__api-error">
+            При регистрации пользователя произошла ошибка
+          </span>
+        )}
         <Button
           type="submit"
           className="register-form__btn"

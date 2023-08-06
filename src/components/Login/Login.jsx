@@ -7,7 +7,7 @@ import { validateEmail } from "../../utils/validation";
 import { Button } from "../Button";
 
 const Login = (props) => {
-  const { onLogin, isLoggedIn } = props;
+  const { onLogin, isLoggedIn, apiError } = props;
   const { values, handleChange, errors, isValid } = useFormAndValidation();
   const navigate = useNavigate();
 
@@ -81,6 +81,12 @@ const Login = (props) => {
             {errors.password}
           </span>
         </div>
+
+        {apiError && (
+          <span className="login-form__api-error">
+            При авторизации произошла ошибка
+          </span>
+        )}
 
         <Button
           type="submit"
