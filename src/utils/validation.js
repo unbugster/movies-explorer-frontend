@@ -1,12 +1,12 @@
 import { regExpEmail, regExpName } from "./config";
 const emailErrorMessage = {
   invalid: "Неверный формат почты",
-  length: "Поле email не долждно быть пустым",
+  length: "Поле email должно быть заполнено",
 };
 
 const nameErrorMessage = {
   invalid: "Поле name содержит только латиницу, кириллицу, пробел или дефис.",
-  length: "Поле name не долждно быть пустым",
+  length: "Поле name должно быть заполнено",
 };
 
 export const validateName = (name) => {
