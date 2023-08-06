@@ -25,6 +25,8 @@ const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
 
+  const [state, setState] = useState("default");
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -92,8 +94,10 @@ const App = () => {
           name: user.name,
           email: user.email,
         });
+        setState("success");
       })
       .catch((err) => {
+        setState("error");
         console.log(`Что-то пошло не так: ${err}`);
       });
   };
@@ -146,6 +150,8 @@ const App = () => {
             path="/profile"
             element={
               <Profile
+                state={state}
+                setState={setState}
                 currentUser={currentUser}
                 onEditProfile={handleEditProfile}
               />
