@@ -2,13 +2,11 @@ import "./MoviesCardList.css";
 import { MoviesCard } from "../MoviesCard";
 import useResize from "../../hooks/useResize.js";
 import { Button } from "../Button";
-// import { useLocation } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
 
 const MoviesCardList = (props) => {
-  const { movies, onSaveMovie, onDeleteMovie } = props;
+  const { movies, savedMovies, onSaveMovie, onDeleteMovie } = props;
   const size = useResize();
-  // const location = useLocation();
   const [moviesToAdd, setMoviesToAdd] = useState(0);
 
   const handleClick = () => {
@@ -35,6 +33,7 @@ const MoviesCardList = (props) => {
               movie={movie}
               onSaveMovie={onSaveMovie}
               onDeleteMovie={onDeleteMovie}
+              savedMovies={savedMovies}
             />
           );
         })}

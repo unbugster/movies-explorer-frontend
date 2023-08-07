@@ -5,7 +5,7 @@ import { useCallback, useState } from "react";
 import { Preloader } from "../Preloader";
 
 const SavedMovies = (props) => {
-  const { movies, onDeleteMovie, apiError } = props;
+  const { onDeleteMovie, apiError, savedMovies } = props;
 
   const [isLoading, setIsLoading] = useState(false);
   const [filteredMovies, setFilteredMovies] = useState([]);
@@ -13,7 +13,7 @@ const SavedMovies = (props) => {
 
   const filterMovies = useCallback(
     (query, isShort) => {
-      const filtered = movies.filter((movie) => {
+      const filtered = savedMovies.filter((movie) => {
         return (
           (!isShort || movie.duration <= 40) &&
           movie.nameRU.toLowerCase().trim().includes(query.toLowerCase())
@@ -27,7 +27,7 @@ const SavedMovies = (props) => {
         setIsLoading(false);
       }, 2000);
     },
-    [movies]
+    [savedMovies]
   );
 
   return (

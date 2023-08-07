@@ -1,14 +1,29 @@
 import "./MoviesCard.css";
 import { getHoursAndMinutes } from "../../utils/functions";
 import { apiBeatfilmMoviesUrl } from "../../utils/config";
+import { useLocation } from "react-router-dom";
 
 const MoviesCard = (props) => {
-  const { movie } = props;
+  const { movie, savedMovies, onSaveMovie, onDeleteMovie } = props;
+  const location = useLocation();
+  const isMoviesPage = location.pathname === "/movies";
+  const isSavedMoviesPage = location.pathname === "/saved-movies";
+
+  const myBdLikedMovie = savedMovies
+    ? savedMovies.find((item) => item.movieId === movie.id)
+    : "";
+
+  const handleLike = () => {
+    onSaveMovie(movie, myBdLikedMovie);
+  };
+
+  const handleDelete = () => {
+    onDeleteMovie(movie._id);
+  };
 
   const imageUrl = movie.image.url
     ? `${apiBeatfilmMoviesUrl}${movie.image.url}`
     : movie.image;
-
   return (
     <li className="movies-list__item moviescard">
       <a href={movie.trailerLink} target="_blank" rel="noreferrer">
@@ -17,14 +32,22 @@ const MoviesCard = (props) => {
       <div className="moviescard__details">
         <div className="moviescard__title-container">
           <h2 className="moviescard__title">{movie.nameRU}</h2>
-          <button
-            type="button"
-            className={`moviescard__like-btn ${
-              movie.isLiked ? " moviescard__like-btn_liked" : ""
-            }`}
-          ></button>
 
-          <button type="button" className={`moviescard__delete-btn`}></button>
+          {isMoviesPage && (
+            <button
+              onClick={handleLike}
+              className={`moviescard__like-btn ${
+                myBdLikedMovie ? " moviescard__like-btn_liked" : ""
+              }`}
+            ></button>
+          )}
+
+          {isSavedMoviesPage && (
+            <button
+              onClick={handleDelete}
+              className={`moviescard__delete-btn`}
+            ></button>
+          )}
         </div>
         <p className="moviescard__duration">
           {getHoursAndMinutes(movie.duration)}

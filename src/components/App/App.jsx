@@ -128,8 +128,9 @@ const App = () => {
       });
   }, [isLoggedIn]);
 
-  const handleSaveMovie = (movie, isLiked, id) => {
-    if (isLiked) {
+  const handleSaveMovie = (movie, myBdMovie) => {
+    const id = myBdMovie?._id;
+    if (id) {
       handleDeleteMovie(id);
     } else {
       console.log("movie", movie);
@@ -200,6 +201,7 @@ const App = () => {
             element={
               <Movies
                 movies={movies}
+                savedMovies={savedMovies}
                 apiError={apiError}
                 onSaveMovie={handleSaveMovie}
                 onDeleteMovie={handleDeleteMovie}
@@ -210,9 +212,9 @@ const App = () => {
             path="/saved-movies"
             element={
               <SavedMovies
-                movies={savedMovies}
                 onDeleteMovie={handleDeleteMovie}
                 apiError={apiError}
+                savedMovies={savedMovies}
               />
             }
           />

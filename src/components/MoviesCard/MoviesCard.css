@@ -92,7 +92,6 @@
   border: none;
   cursor: pointer;
   transition: all 0.2s linear;
-  display: none;
 }
 
 .moviescard__container:hover .moviescard__delete-btn {

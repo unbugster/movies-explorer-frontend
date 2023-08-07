@@ -5,7 +5,7 @@ import "./Movies.css";
 import { Preloader } from "../Preloader";
 
 const Movies = (props) => {
-  const { movies, apiError, onSaveMovie, onDeleteMovie } = props;
+  const { movies, savedMovies, apiError, onSaveMovie, onDeleteMovie } = props;
   const [isLoading, setIsLoading] = useState(false);
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [notFound, setNotFound] = useState(false);
@@ -44,6 +44,7 @@ const Movies = (props) => {
           {!isLoading && !apiError && (
             <MoviesCardList
               movies={filteredMovies}
+              savedMovies={savedMovies}
               onSaveMovie={onSaveMovie}
               onDeleteMovie={onDeleteMovie}
             />
