@@ -15,6 +15,7 @@ import { auth } from "../../utils/Auth";
 
 import { MainApi } from "../../utils/MainApi";
 import useResize from "../../hooks/useResize";
+import { ProtectedRoute } from "../ProtectedRoute";
 const apiDataMain = new MainApi({ url: "http://localhost:3100" });
 
 const App = () => {
@@ -196,41 +197,49 @@ const App = () => {
               />
             }
           />
+
           <Route
             path="/movies"
             element={
-              <Movies
-                movies={movies}
-                savedMovies={savedMovies}
-                apiError={apiError}
-                onSaveMovie={handleSaveMovie}
-                onDeleteMovie={handleDeleteMovie}
-              />
+              <ProtectedRoute user={currentUser}>
+                <Movies
+                  movies={movies}
+                  savedMovies={savedMovies}
+                  apiError={apiError}
+                  onSaveMovie={handleSaveMovie}
+                  onDeleteMovie={handleDeleteMovie}
+                />
+              </ProtectedRoute>
             }
           />
           <Route
             path="/saved-movies"
             element={
-              <SavedMovies
-                onDeleteMovie={handleDeleteMovie}
-                apiError={apiError}
-                savedMovies={savedMovies}
-              />
+              <ProtectedRoute user={currentUser}>
+                <SavedMovies
+                  onDeleteMovie={handleDeleteMovie}
+                  apiError={apiError}
+                  savedMovies={savedMovies}
+                />
+              </ProtectedRoute>
             }
           />
           <Route
             path="/profile"
             element={
-              <Profile
-                state={state}
-                setState={setState}
-                currentUser={currentUser}
-                onEditProfile={handleEditProfile}
-                apiError={apiError}
-                setIsLoggedIn={setIsLoggedIn}
-              />
+              <ProtectedRoute user={currentUser}>
+                <Profile
+                  state={state}
+                  setState={setState}
+                  currentUser={currentUser}
+                  onEditProfile={handleEditProfile}
+                  apiError={apiError}
+                  setIsLoggedIn={setIsLoggedIn}
+                />
+              </ProtectedRoute>
             }
           />
+
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
