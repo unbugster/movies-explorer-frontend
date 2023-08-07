@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
 
-const ProtectedRoute = ({ user, children }) => {
-  if (!user) {
+const ProtectedRoute = ({ isLoggedIn, children }) => {
+  if (!isLoggedIn) {
     return <Navigate to="/" replace />;
   }
 

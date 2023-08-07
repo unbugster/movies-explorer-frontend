@@ -201,7 +201,7 @@ const App = () => {
           <Route
             path="/movies"
             element={
-              <ProtectedRoute user={currentUser}>
+              <ProtectedRoute isLoggedIn={isLoggedIn}>
                 <Movies
                   movies={movies}
                   savedMovies={savedMovies}
@@ -215,7 +215,7 @@ const App = () => {
           <Route
             path="/saved-movies"
             element={
-              <ProtectedRoute user={currentUser}>
+              <ProtectedRoute isLoggedIn={isLoggedIn}>
                 <SavedMovies
                   onDeleteMovie={handleDeleteMovie}
                   apiError={apiError}
@@ -227,7 +227,7 @@ const App = () => {
           <Route
             path="/profile"
             element={
-              <ProtectedRoute user={currentUser}>
+              <ProtectedRoute isLoggedIn={isLoggedIn}>
                 <Profile
                   state={state}
                   setState={setState}
