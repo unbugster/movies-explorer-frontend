@@ -6,7 +6,7 @@ import { Button } from "../Button";
 import { useEffect, useMemo, useState } from "react";
 
 const MoviesCardList = (props) => {
-  const { movies } = props;
+  const { movies, onSaveMovie, onDeleteMovie } = props;
   const size = useResize();
   // const location = useLocation();
   const [moviesToAdd, setMoviesToAdd] = useState(0);
@@ -29,7 +29,14 @@ const MoviesCardList = (props) => {
     <>
       <ul className="movies-list">
         {moviesToRender.map((movie) => {
-          return <MoviesCard key={movie.id || movie.movieId} movie={movie} />;
+          return (
+            <MoviesCard
+              key={movie.id || movie.movieId}
+              movie={movie}
+              onSaveMovie={onSaveMovie}
+              onDeleteMovie={onDeleteMovie}
+            />
+          );
         })}
       </ul>
 

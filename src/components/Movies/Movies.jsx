@@ -5,7 +5,7 @@ import "./Movies.css";
 import { Preloader } from "../Preloader";
 
 const Movies = (props) => {
-  const { movies, apiError } = props;
+  const { movies, apiError, onSaveMovie, onDeleteMovie } = props;
   const [isLoading, setIsLoading] = useState(false);
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [notFound, setNotFound] = useState(false);
@@ -42,7 +42,11 @@ const Movies = (props) => {
         <div className="movies__container container">
           {isLoading && <Preloader />}
           {!isLoading && !apiError && (
-            <MoviesCardList movies={filteredMovies} />
+            <MoviesCardList
+              movies={filteredMovies}
+              onSaveMovie={onSaveMovie}
+              onDeleteMovie={onDeleteMovie}
+            />
           )}
           {!isLoading && !apiError && notFound && (
             <p className="movies__not-found">Ничего не найдено</p>

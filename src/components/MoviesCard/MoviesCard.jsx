@@ -1,7 +1,10 @@
 import "./MoviesCard.css";
 import { getHoursAndMinutes } from "../../utils/functions";
 import { apiBeatfilmMoviesUrl } from "../../utils/config";
-const MoviesCard = ({ movie }) => {
+
+const MoviesCard = (props) => {
+  const { movie } = props;
+
   const imageUrl = movie.image.url
     ? `${apiBeatfilmMoviesUrl}${movie.image.url}`
     : movie.image;

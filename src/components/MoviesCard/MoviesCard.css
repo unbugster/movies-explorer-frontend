@@ -85,16 +85,14 @@
 .moviescard__delete-btn {
   background: no-repeat center/contain
     url("../../images/movies_heart-icon_remove-like.svg");
-  display: none;
   padding: 0;
   margin: 0;
   width: 24px;
   height: 24px;
   border: none;
   cursor: pointer;
-  position: absolute;
-  top: -5px;
-  right: 0;
+  transition: all 0.2s linear;
+  display: none;
 }
 
 .moviescard__container:hover .moviescard__delete-btn {
