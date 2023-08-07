@@ -44,5 +44,5 @@ export class Auth {
 }
 
 export const auth = new Auth({
-  url: "http://localhost:3100",
+  url: "https://api.movies.unbugster.nomoredomains.rocks",
 });

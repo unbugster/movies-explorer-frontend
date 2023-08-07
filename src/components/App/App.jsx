@@ -16,7 +16,9 @@ import { auth } from "../../utils/Auth";
 import { MainApi } from "../../utils/MainApi";
 import useResize from "../../hooks/useResize";
 import { ProtectedRoute } from "../ProtectedRoute";
-const apiDataMain = new MainApi({ url: "http://localhost:3100" });
+const apiDataMain = new MainApi({
+  url: "https://api.movies.unbugster.nomoredomains.rocks",
+});
 
 const App = () => {
   const location = useLocation();
