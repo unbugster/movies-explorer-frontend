@@ -7,7 +7,7 @@ import { validateEmail } from "../../utils/validation";
 import { Button } from "../Button";
 
 const Login = (props) => {
-  const { onLogin, isLoggedIn, apiError, setApiError } = props;
+  const { onLogin, isLoggedIn, apiError, setApiError, state } = props;
   const { values, handleChange, errors, isValid } = useFormAndValidation();
   const navigate = useNavigate();
 
@@ -50,6 +50,7 @@ const Login = (props) => {
             onChange={handleChange}
             type="email"
             placeholder="Введите почту"
+            disabled={state === "loading"}
             required
           />
           <span
@@ -75,6 +76,7 @@ const Login = (props) => {
             placeholder="Введите пароль"
             minLength="6"
             maxLength="200"
+            disabled={state === "loading"}
             required
           />
           <span

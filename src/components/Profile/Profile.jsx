@@ -54,7 +54,6 @@ const Profile = (props) => {
     (inputEmailRef.current.value === currentUser.email &&
       inputNameRef.current.value === currentUser.name);
 
-  const inputDisabled = state === "default" || state === "success";
   return (
     <section className="profile">
       <h1 className="profile__welcome">Привет, {currentUser.name}!</h1>
@@ -74,7 +73,7 @@ const Profile = (props) => {
             maxLength="40"
             required
             ref={inputNameRef}
-            disabled={inputDisabled}
+            disabled={state === "loading"}
           />
           <span
             className={`profile-form__input-error ${
@@ -98,7 +97,7 @@ const Profile = (props) => {
             type="email"
             placeholder="Введите почту"
             ref={inputEmailRef}
-            disabled={inputDisabled}
+            disabled={state === "loading"}
             required
           />
           <span

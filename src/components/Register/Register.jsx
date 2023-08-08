@@ -6,7 +6,7 @@ import logo from "../../images/logo.svg";
 import { Button } from "../Button";
 import { validateEmail, validateName } from "../../utils/validation";
 const Register = (props) => {
-  const { onRegister, isLoggedIn, apiError, setApiError } = props;
+  const { onRegister, isLoggedIn, apiError, setApiError, state } = props;
   const { values, handleChange, errors, isValid } = useFormAndValidation();
   const navigate = useNavigate();
 
@@ -50,6 +50,7 @@ const Register = (props) => {
             type="text"
             placeholder="Введите имя"
             maxLength="40"
+            disabled={state === "loading"}
             required
           />
           <span
@@ -73,6 +74,7 @@ const Register = (props) => {
             onChange={handleChange}
             type="email"
             placeholder="Введите почту"
+            disabled={state === "loading"}
             required
           />
           <span
@@ -99,6 +101,7 @@ const Register = (props) => {
             minLength="6"
             maxLength="200"
             required
+            disabled={state === "loading"}
           />
           <span
             className={`register-form__input-error ${

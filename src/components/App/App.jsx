@@ -69,6 +69,7 @@ const App = () => {
   }, [isLoggedIn]);
 
   const handleLogin = (values) => {
+    setState("loading");
     auth
       .authorize(values.email, values.password)
       .then((data) => {
@@ -76,25 +77,31 @@ const App = () => {
           localStorage.setItem("jwt", data.token);
           setIsLoggedIn(true);
           navigate("/movies");
+          setState("success");
         }
       })
       .catch((err) => {
         setApiError(err);
+        setState("error");
       });
   };
 
   const handleRegister = (values) => {
+    setState("loading");
     auth
       .register(values.name, values.email, values.password)
       .then((res) => {
         handleLogin(values);
+        setState("success");
       })
       .catch((err) => {
         setApiError(err);
+        setState("error");
       });
   };
 
   const handleEditProfile = (user) => {
+    setState("loading");
     apiDataMain
       .editUserData(user)
       .then(() => {
@@ -192,6 +199,7 @@ const App = () => {
                 isLoggedIn={isLoggedIn}
                 apiError={apiError}
                 setApiError={setApiError}
+                state={state}
               />
             }
           />
@@ -203,6 +211,7 @@ const App = () => {
                 isLoggedIn={isLoggedIn}
                 apiError={apiError}
                 setApiError={setApiError}
+                state={state}
               />
             }
           />
