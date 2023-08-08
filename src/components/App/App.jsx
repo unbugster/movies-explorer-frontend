@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./App.css";
 import { Header } from "../Header";
 import { Footer } from "../Footer";
@@ -16,6 +16,7 @@ import { auth } from "../../utils/Auth";
 import { MainApi } from "../../utils/MainApi";
 import useResize from "../../hooks/useResize";
 import { ProtectedRoute } from "../ProtectedRoute";
+import { UserContext } from "../UserContext";
 
 const apiDataMain = new MainApi({
   url: process.env.REACT_APP_URL || "http://localhost:4000",
@@ -33,12 +34,13 @@ const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isBurgerActive, setIsBurgerActive] = useState(false);
   const [movies, setMovies] = useState([]);
-  const [currentUser, setCurrentUser] = useState({});
   const [apiError, setApiError] = useState("");
   const [state, setState] = useState("default");
   const [savedMovies, setSavedMovies] = useState([]);
   const [isSearched, setIsSearched] = useState(false);
   const [isInited, setIsInited] = useState(false);
+
+  const { currentUser, setCurrentUser } = useContext(UserContext);
 
   const size = useResize();
   const windowWidth = size.width;
@@ -246,7 +248,6 @@ const App = () => {
                 <Profile
                   state={state}
                   setState={setState}
-                  currentUser={currentUser}
                   onEditProfile={handleEditProfile}
                   apiError={apiError}
                   setIsLoggedIn={setIsLoggedIn}

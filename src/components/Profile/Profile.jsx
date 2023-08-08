@@ -1,16 +1,19 @@
 import "./Profile.css";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { Button } from "../Button";
 import { validateEmail, validateName } from "../../utils/validation";
+import { UserContext } from "../UserContext";
 
 const Profile = (props) => {
-  const { currentUser, onEditProfile, state, setState, setIsLoggedIn } = props;
+  const { onEditProfile, state, setState, setIsLoggedIn } = props;
   const { values, handleChange, isValid, setValues, setIsValid } =
     useFormAndValidation();
   const inputNameRef = useRef();
   const inputEmailRef = useRef();
+
+  const { currentUser } = useContext(UserContext);
 
   const handleInputChange = (evt) => {
     handleChange(evt);
