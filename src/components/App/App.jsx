@@ -41,6 +41,26 @@ const App = () => {
   const windowWidth = size.width;
 
   useEffect(() => {
+    const jwt = localStorage.getItem("jwt");
+    if (jwt) {
+      auth
+        .checkToken(jwt)
+        .then((res) => {
+          if (res) {
+            setIsLoggedIn(true);
+            navigate(location.pathname);
+          }
+        })
+        .catch((err) => {
+          if (err.status === 401) {
+            localStorage.removeItem("jwt");
+          }
+          console.log(err);
+        });
+    }
+  }, []);
+
+  useEffect(() => {
     if (isBurgerActive && windowWidth < 768) {
       document.body.style.overflow = "hidden";
     } else {
@@ -119,21 +139,21 @@ const App = () => {
   };
 
   useEffect(() => {
-    apiDataMain
-      .getUserData()
-      .then((user) => {
-        setCurrentUser(user);
-        setIsLoggedIn(true);
-      })
-      .catch((error) => {
-        console.log(`Что-то пошло не так... (${error})`);
-      })
-      .finally(() => {
-        setIsInited(true);
-      });
-  }, []);
+    isLoggedIn &&
+      apiDataMain
+        .getUserData()
+        .then((user) => {
+          setCurrentUser(user);
+          setIsLoggedIn(true);
+        })
+        .catch((error) => {
+          console.log(`Что-то пошло не так... (${error})`);
+        })
+        .finally(() => {
+          setIsInited(true);
+        });
+  }, [isLoggedIn]);
 
-  // Сохраненные фильмы
   useEffect(() => {
     isLoggedIn &&
       apiDataMain
