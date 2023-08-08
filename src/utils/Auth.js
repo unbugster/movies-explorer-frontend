@@ -43,11 +43,10 @@ export class Auth {
   }
 }
 
-// export const auth = new Auth({
-//   url: "https://api.movies.unbugster.nomoredomains.rocks",
-// });
-
-
 export const auth = new Auth({
-  url: "http://localhost:4000",
+  url: "https://api.movies.unbugster.nomoredomains.rocks",
 });
+
+// export const auth = new Auth({
+//   url: "http://localhost:4000",
+// });
