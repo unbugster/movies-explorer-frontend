@@ -1,14 +1,9 @@
-import { apiBeatfilmMoviesUrl } from "../utils/config";
-
-const defaultHeaders = {
-  "Content-Type": "application/json",
-  authorization: `Bearer ${localStorage.getItem("jwt")}`,
-};
+import { DEFAULT_API_HEADERS, API_BFMOVIES_URL } from "../utils/config";
 
 export class MainApi {
   constructor({ url, headers }) {
     this._url = url;
-    this._headers = { ...defaultHeaders, ...headers };
+    this._headers = { ...DEFAULT_API_HEADERS, ...headers };
   }
 
   _getToken = () => {
@@ -58,8 +53,8 @@ export class MainApi {
         duration: movie.duration,
         description: movie.description,
         trailerLink: movie.trailerLink,
-        image: `${apiBeatfilmMoviesUrl}${movie.image.url}`,
-        thumbnail: `${apiBeatfilmMoviesUrl}${movie.image.formats.thumbnail.url}`,
+        image: `${API_BFMOVIES_URL}${movie.image.url}`,
+        thumbnail: `${API_BFMOVIES_URL}${movie.image.formats.thumbnail.url}`,
       }),
       headers: { ...this._headers, authorization: this._getToken() },
     }).then((res) => this._checkResponse(res));

@@ -17,19 +17,14 @@ import { MainApi } from "../../utils/MainApi";
 import useResize from "../../hooks/useResize";
 import { ProtectedRoute } from "../ProtectedRoute";
 import { UserContext } from "../UserContext";
+import { FOOTER_PATHS, HEADER_PATHS } from "../../utils/config";
 
 const apiDataMain = new MainApi({
   url: process.env.REACT_APP_URL || "http://localhost:4000",
-  headers: {
-    "Content-Type": "application/json",
-    authorization: `Bearer ${localStorage.getItem("jwt")}`,
-  },
 });
 
 const App = () => {
   const location = useLocation();
-  const headerPaths = ["/", "/movies", "/saved-movies", "/profile"];
-  const footerPaths = ["/", "/movies", "/saved-movies"];
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isBurgerActive, setIsBurgerActive] = useState(false);
@@ -176,7 +171,7 @@ const App = () => {
 
   return (
     <div className="page">
-      {headerPaths.includes(location.pathname) ? (
+      {HEADER_PATHS.includes(location.pathname) ? (
         <Header
           isBurgerActive={isBurgerActive}
           setIsBurgerActive={setIsBurgerActive}
@@ -258,7 +253,7 @@ const App = () => {
           <Route path="*" element={<NotFoundPage isLoggedIn={isLoggedIn} />} />
         </Routes>
       </main>
-      {footerPaths.includes(location.pathname) ? <Footer /> : ""}
+      {FOOTER_PATHS.includes(location.pathname) ? <Footer /> : ""}
     </div>
   );
 };

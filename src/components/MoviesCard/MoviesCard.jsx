@@ -1,6 +1,6 @@
 import "./MoviesCard.css";
 import { getHoursAndMinutes } from "../../utils/functions";
-import { apiBeatfilmMoviesUrl } from "../../utils/config";
+import { API_BFMOVIES_URL } from "../../utils/config";
 import { useLocation } from "react-router-dom";
 
 const MoviesCard = (props) => {
@@ -22,7 +22,7 @@ const MoviesCard = (props) => {
   };
 
   const imageUrl = movie.image.url
-    ? `${apiBeatfilmMoviesUrl}${movie.image.url}`
+    ? `${API_BFMOVIES_URL}${movie.image.url}`
     : movie.image;
   return (
     <li className="movies-list__item moviescard">

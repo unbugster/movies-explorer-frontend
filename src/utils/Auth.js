@@ -1,11 +1,9 @@
-const defaultHeaders = {
-  "Content-Type": "application/json",
-};
+import { DEFAULT_API_HEADERS } from "./config";
 
 export class Auth {
   constructor({ url, headers }) {
     this.url = url;
-    this.headers = { ...defaultHeaders, ...headers };
+    this.headers = { ...DEFAULT_API_HEADERS, ...headers };
   }
 
   _checkResponse(res) {

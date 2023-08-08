@@ -1,13 +1,9 @@
-import { apiBeatfilmMoviesDataUrl } from "./config";
-
-const defaultHeaders = {
-  "Content-Type": "application/json",
-};
+import { DEFAULT_API_HEADERS, API_BFMOVIES_DATA_URL } from "./config";
 
 class MoviesApi {
   constructor({ url, headers }) {
     this._url = url;
-    this._headers = { ...defaultHeaders, ...headers };
+    this._headers = { ...DEFAULT_API_HEADERS, ...headers };
   }
 
   _checkResponse(res) {
@@ -26,5 +22,5 @@ class MoviesApi {
 }
 
 export const apiBeatfilmMoviesData = new MoviesApi({
-  url: apiBeatfilmMoviesDataUrl,
+  url: API_BFMOVIES_DATA_URL,
 });
