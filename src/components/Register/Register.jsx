@@ -6,7 +6,8 @@ import logo from "../../images/logo.svg";
 import { Button } from "../Button";
 import { validateEmail, validateName } from "../../utils/validation";
 const Register = (props) => {
-  const { onRegister, isLoggedIn, apiError, setApiError, state } = props;
+  const { onRegister, isLoggedIn, apiError, setApiError, state, setState } =
+    props;
   const { values, handleChange, errors, isValid } = useFormAndValidation();
   const navigate = useNavigate();
 
@@ -23,6 +24,12 @@ const Register = (props) => {
   const handleLogin = () => {
     setApiError("");
   };
+
+  useEffect(() => {
+    return () => {
+      setState("default");
+    };
+  }, []);
 
   return (
     <section className="register-page">

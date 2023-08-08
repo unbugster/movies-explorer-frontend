@@ -220,6 +220,7 @@ const App = () => {
                 apiError={apiError}
                 setApiError={setApiError}
                 state={state}
+                setState={setState}
               />
             }
           />
@@ -232,6 +233,7 @@ const App = () => {
                 apiError={apiError}
                 setApiError={setApiError}
                 state={state}
+                setState={setState}
               />
             }
           />

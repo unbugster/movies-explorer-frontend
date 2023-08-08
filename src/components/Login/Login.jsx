@@ -7,7 +7,7 @@ import { validateEmail } from "../../utils/validation";
 import { Button } from "../Button";
 
 const Login = (props) => {
-  const { onLogin, isLoggedIn, apiError, setApiError, state } = props;
+  const { onLogin, isLoggedIn, apiError, setApiError, state, setState } = props;
   const { values, handleChange, errors, isValid } = useFormAndValidation();
   const navigate = useNavigate();
 
@@ -23,6 +23,12 @@ const Login = (props) => {
   const handleRegister = () => {
     setApiError("");
   };
+
+  useEffect(() => {
+    return () => {
+      setState("default");
+    };
+  }, []);
 
   return (
     <section className="login-page">

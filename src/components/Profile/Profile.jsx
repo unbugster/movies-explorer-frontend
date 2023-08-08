@@ -54,6 +54,12 @@ const Profile = (props) => {
     (inputEmailRef.current.value === currentUser.email &&
       inputNameRef.current.value === currentUser.name);
 
+  useEffect(() => {
+    return () => {
+      setState("default");
+    };
+  }, []);
+
   return (
     <section className="profile">
       <h1 className="profile__welcome">Привет, {currentUser.name}!</h1>
