@@ -117,21 +117,18 @@ const App = () => {
   };
 
   useEffect(() => {
-    const jwt = localStorage.getItem("jwt");
-    if (jwt) {
-      apiDataMain
-        .getUserData()
-        .then((user) => {
-          setCurrentUser(user);
-          setIsLoggedIn(true);
-        })
-        .catch((error) => {
-          console.log(`Что-то пошло не так... (${error})`);
-        })
-        .finally(() => {
-          setIsInited(true);
-        });
-    }
+    apiDataMain
+      .getUserData()
+      .then((user) => {
+        setCurrentUser(user);
+        setIsLoggedIn(true);
+      })
+      .catch((error) => {
+        console.log(`Что-то пошло не так... (${error})`);
+      })
+      .finally(() => {
+        setIsInited(true);
+      });
   }, []);
 
   // Сохраненные фильмы
