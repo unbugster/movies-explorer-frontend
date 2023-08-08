@@ -44,9 +44,5 @@ export class Auth {
 }
 
 export const auth = new Auth({
-  url: "https://api.movies.unbugster.nomoredomains.rocks",
+  url: process.env.REACT_APP_URL || "http://localhost:4000",
 });
-
-// export const auth = new Auth({
-//   url: "http://localhost:4000",
-// });
