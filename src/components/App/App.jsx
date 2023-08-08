@@ -196,6 +196,7 @@ const App = () => {
                 onRegister={handleRegister}
                 isLoggedIn={isLoggedIn}
                 apiError={apiError}
+                setApiError={setApiError}
               />
             }
           />
@@ -206,6 +207,7 @@ const App = () => {
                 onLogin={handleLogin}
                 isLoggedIn={isLoggedIn}
                 apiError={apiError}
+                setApiError={setApiError}
               />
             }
           />

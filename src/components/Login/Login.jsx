@@ -7,7 +7,7 @@ import { validateEmail } from "../../utils/validation";
 import { Button } from "../Button";
 
 const Login = (props) => {
-  const { onLogin, isLoggedIn, apiError } = props;
+  const { onLogin, isLoggedIn, apiError, setApiError } = props;
   const { values, handleChange, errors, isValid } = useFormAndValidation();
   const navigate = useNavigate();
 
@@ -19,6 +19,10 @@ const Login = (props) => {
 
   const emailError = validateEmail(values.email);
   const btnDisabled = !isValid || emailError;
+
+  const handleRegister = () => {
+    setApiError("");
+  };
 
   return (
     <section className="login-page">
@@ -98,7 +102,11 @@ const Login = (props) => {
 
         <div className="login-page__text">
           <span>Ещё не зарегистрированы? </span>
-          <Link to="/signup" className="login-page__link">
+          <Link
+            onClick={handleRegister}
+            to="/signup"
+            className="login-page__link"
+          >
             Регистрация
           </Link>
         </div>

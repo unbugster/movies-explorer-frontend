@@ -6,7 +6,7 @@ import logo from "../../images/logo.svg";
 import { Button } from "../Button";
 import { validateEmail, validateName } from "../../utils/validation";
 const Register = (props) => {
-  const { onRegister, isLoggedIn, apiError } = props;
+  const { onRegister, isLoggedIn, apiError, setApiError } = props;
   const { values, handleChange, errors, isValid } = useFormAndValidation();
   const navigate = useNavigate();
 
@@ -19,6 +19,10 @@ const Register = (props) => {
   const nameError = validateName(values.name);
   const emailError = validateEmail(values.email);
   const btnDisabled = !isValid || nameError || emailError;
+
+  const handleLogin = () => {
+    setApiError("");
+  };
 
   return (
     <section className="register-page">
@@ -120,7 +124,11 @@ const Register = (props) => {
 
         <div className="register-page__text">
           <span>Уже зарегистрированы? </span>
-          <Link to="/signin" className="register-page__link">
+          <Link
+            onClick={handleLogin}
+            to="/signin"
+            className="register-page__link"
+          >
             Войти
           </Link>
         </div>
