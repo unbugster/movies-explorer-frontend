@@ -4,7 +4,7 @@ import { FilterCheckbox } from "../FilterCheckbox";
 import { useEffect, useRef, useState } from "react";
 
 const SearchForm = (props) => {
-  const { onFilter } = props;
+  const { onFilter, setIsSearched } = props;
   const searchText = useRef(localStorage.getItem("searchQuery") || "");
   const inputRef = useRef();
   const [submitTime, setSubmitTime] = useState(null);
@@ -21,6 +21,7 @@ const SearchForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitTime(Date.now());
+    setIsSearched(true);
     if (!searchText.current) {
       setShowSearchMessage(true);
     } else {

@@ -16,8 +16,13 @@ import { auth } from "../../utils/Auth";
 import { MainApi } from "../../utils/MainApi";
 import useResize from "../../hooks/useResize";
 import { ProtectedRoute } from "../ProtectedRoute";
+
 const apiDataMain = new MainApi({
-  url: "https://api.movies.unbugster.nomoredomains.rocks",
+  url: process.env.REACT_APP_URL || "http://localhost:4000",
+  headers: {
+    "Content-Type": "application/json",
+    authorization: `Bearer ${localStorage.getItem("jwt")}`,
+  },
 });
 
 const App = () => {
@@ -32,6 +37,8 @@ const App = () => {
   const [apiError, setApiError] = useState("");
   const [state, setState] = useState("default");
   const [savedMovies, setSavedMovies] = useState([]);
+  const [isSearched, setIsSearched] = useState(false);
+  const [isInited, setIsInited] = useState(false);
 
   const size = useResize();
   const windowWidth = size.width;
@@ -108,27 +115,34 @@ const App = () => {
   };
 
   useEffect(() => {
-    apiDataMain
-      .getUserData()
-      .then((user) => {
-        setCurrentUser(user);
-        setIsLoggedIn(true);
-      })
-      .catch((error) => {
-        console.log(`Что-то пошло не так... (${error})`);
-      });
+    const jwt = localStorage.getItem("jwt");
+    if (jwt) {
+      apiDataMain
+        .getUserData()
+        .then((user) => {
+          setCurrentUser(user);
+          setIsLoggedIn(true);
+        })
+        .catch((error) => {
+          console.log(`Что-то пошло не так... (${error})`);
+        })
+        .finally(() => {
+          setIsInited(true);
+        });
+    }
   }, []);
 
   // Сохраненные фильмы
   useEffect(() => {
-    apiDataMain
-      .getSavedMovies()
-      .then((data) => {
-        setSavedMovies(data);
-      })
-      .catch((err) => {
-        console.log(`Что-то пошло не так... (${err})`);
-      });
+    isLoggedIn &&
+      apiDataMain
+        .getSavedMovies()
+        .then((data) => {
+          setSavedMovies(data);
+        })
+        .catch((err) => {
+          console.log(`Что-то пошло не так... (${err})`);
+        });
   }, [isLoggedIn]);
 
   const handleSaveMovie = (movie, myBdMovie) => {
@@ -136,11 +150,9 @@ const App = () => {
     if (id) {
       handleDeleteMovie(id);
     } else {
-      console.log("movie", movie);
       apiDataMain
         .saveMovie(movie)
         .then((res) => {
-          console.log("handleSaveMovie res", res);
           setSavedMovies([...savedMovies, res]);
         })
         .catch((err) => {
@@ -153,7 +165,6 @@ const App = () => {
     apiDataMain
       .deleteMovie(id)
       .then((res) => {
-        console.log("handleDeleteMovie res:", res);
         const filteredSavedMovies = savedMovies.filter(
           (movie) => movie._id !== id
         );
@@ -203,13 +214,15 @@ const App = () => {
           <Route
             path="/movies"
             element={
-              <ProtectedRoute isLoggedIn={isLoggedIn}>
+              <ProtectedRoute isLoggedIn={isLoggedIn} isInited={isInited}>
                 <Movies
                   movies={movies}
                   savedMovies={savedMovies}
                   apiError={apiError}
                   onSaveMovie={handleSaveMovie}
                   onDeleteMovie={handleDeleteMovie}
+                  isSearched={isSearched}
+                  setIsSearched={setIsSearched}
                 />
               </ProtectedRoute>
             }
@@ -217,7 +230,7 @@ const App = () => {
           <Route
             path="/saved-movies"
             element={
-              <ProtectedRoute isLoggedIn={isLoggedIn}>
+              <ProtectedRoute isLoggedIn={isLoggedIn} isInited={isInited}>
                 <SavedMovies
                   onDeleteMovie={handleDeleteMovie}
                   apiError={apiError}
@@ -229,7 +242,7 @@ const App = () => {
           <Route
             path="/profile"
             element={
-              <ProtectedRoute isLoggedIn={isLoggedIn}>
+              <ProtectedRoute isLoggedIn={isLoggedIn} isInited={isInited}>
                 <Profile
                   state={state}
                   setState={setState}
@@ -242,7 +255,7 @@ const App = () => {
             }
           />
 
-          <Route path="*" element={<NotFoundPage />} />
+          <Route path="*" element={<NotFoundPage isLoggedIn={isLoggedIn} />} />
         </Routes>
       </main>
       {footerPaths.includes(location.pathname) ? <Footer /> : ""}

@@ -5,7 +5,15 @@ import "./Movies.css";
 import { Preloader } from "../Preloader";
 
 const Movies = (props) => {
-  const { movies, savedMovies, apiError, onSaveMovie, onDeleteMovie } = props;
+  const {
+    movies,
+    savedMovies,
+    apiError,
+    onSaveMovie,
+    onDeleteMovie,
+    setIsSearched,
+    isSearched,
+  } = props;
   const [isLoading, setIsLoading] = useState(false);
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [notFound, setNotFound] = useState(false);
@@ -37,11 +45,11 @@ const Movies = (props) => {
 
   return (
     <>
-      <SearchForm onFilter={filterMovies} />
+      <SearchForm onFilter={filterMovies} setIsSearched={setIsSearched} />
       <section className="movies" aria-label="Галерея фильмов">
         <div className="movies__container container">
           {isLoading && <Preloader />}
-          {!isLoading && !apiError && (
+          {!isLoading && !apiError && isSearched && (
             <MoviesCardList
               movies={filteredMovies}
               savedMovies={savedMovies}

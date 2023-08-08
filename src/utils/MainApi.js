@@ -11,6 +11,10 @@ export class MainApi {
     this._headers = { ...defaultHeaders, ...headers };
   }
 
+  _getToken = () => {
+    return `Bearer ${localStorage.getItem("jwt")}`;
+  };
+
   _checkResponse(res) {
     if (res.ok) {
       return res.json();
@@ -21,14 +25,14 @@ export class MainApi {
 
   getUserData() {
     return fetch(`${this._url}/users/me`, {
-      headers: this._headers,
+      headers: { ...this._headers, authorization: this._getToken() },
       method: "GET",
     }).then((res) => this._checkResponse(res));
   }
 
   editUserData(data) {
     return fetch(`${this._url}/users/me`, {
-      headers: this._headers,
+      headers: { ...this._headers, authorization: this._getToken() },
       method: "PATCH",
       body: JSON.stringify({ email: data.email, name: data.name }),
     }).then((res) => this._checkResponse(res));
@@ -36,7 +40,7 @@ export class MainApi {
 
   getSavedMovies() {
     return fetch(`${this._url}/movies`, {
-      headers: this._headers,
+      headers: { ...this._headers, authorization: this._getToken() },
       method: "GET",
     }).then((res) => this._checkResponse(res));
   }
@@ -57,14 +61,14 @@ export class MainApi {
         image: `${apiBeatfilmMoviesUrl}${movie.image.url}`,
         thumbnail: `${apiBeatfilmMoviesUrl}${movie.image.formats.thumbnail.url}`,
       }),
-      headers: this._headers,
+      headers: { ...this._headers, authorization: this._getToken() },
     }).then((res) => this._checkResponse(res));
   }
 
   deleteMovie(id) {
     return fetch(`${this._url}/movies/${id}`, {
       method: "DELETE",
-      headers: this._headers,
+      headers: { ...this._headers, authorization: this._getToken() },
     }).then((res) => this._checkResponse(res));
   }
 
