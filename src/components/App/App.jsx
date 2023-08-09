@@ -32,7 +32,9 @@ const App = () => {
   const [apiError, setApiError] = useState("");
   const [state, setState] = useState("default");
   const [savedMovies, setSavedMovies] = useState([]);
-  const [isSearched, setIsSearched] = useState(false);
+  const [isSearched, setIsSearched] = useState(
+    !!localStorage.getItem("searchQuery")
+  );
   const [isInited, setIsInited] = useState(false);
 
   const { currentUser, setCurrentUser } = useContext(UserContext);
@@ -58,7 +60,7 @@ const App = () => {
           console.log(err);
         });
     }
-  }, []);
+  }, [location.pathname, navigate]);
 
   useEffect(() => {
     if (isBurgerActive && windowWidth < 768) {
@@ -152,7 +154,7 @@ const App = () => {
         .finally(() => {
           setIsInited(true);
         });
-  }, [isLoggedIn]);
+  }, [isLoggedIn, setCurrentUser]);
 
   useEffect(() => {
     isLoggedIn &&

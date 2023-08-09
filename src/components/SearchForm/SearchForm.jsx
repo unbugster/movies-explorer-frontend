@@ -42,7 +42,11 @@ const SearchForm = (props) => {
   useEffect(() => {
     inputRef.current.value = searchText.current;
     inputRef.current.focus();
-  }, []);
+  }, [isShort, onFilter]);
+
+  useEffect(() => {
+    onFilter(searchText.current, isShort);
+  }, [isShort, onFilter]);
 
   return (
     <section className="search">
