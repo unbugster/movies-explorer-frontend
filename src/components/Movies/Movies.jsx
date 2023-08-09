@@ -18,6 +18,10 @@ const Movies = (props) => {
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [notFound, setNotFound] = useState(false);
 
+  const searchText = localStorage.getItem("searchQuery") || "";
+  const isShortValue = localStorage.getItem("isShort");
+  const initialShort = !isShortValue || isShortValue === "false" ? false : true;
+
   const filterMovies = useCallback(
     (query, isShort) => {
       const filtered = movies.filter((movie) => {
@@ -26,7 +30,9 @@ const Movies = (props) => {
           movie.nameRU.toLowerCase().trim().includes(query.toLowerCase())
         );
       });
-
+      setIsSearched(true);
+      localStorage.setItem("searchQuery", query);
+      localStorage.setItem("isShort", isShort);
       setNotFound(query && !filtered.length);
       setFilteredMovies(filtered);
 
@@ -34,7 +40,7 @@ const Movies = (props) => {
         setIsLoading(false);
       }, 2000);
     },
-    [movies]
+    [movies, setIsSearched]
   );
 
   useEffect(() => {
@@ -45,7 +51,12 @@ const Movies = (props) => {
 
   return (
     <>
-      <SearchForm onFilter={filterMovies} setIsSearched={setIsSearched} />
+      <SearchForm
+        onFilter={filterMovies}
+        setIsSearched={setIsSearched}
+        initialText={searchText}
+        initialShort={initialShort}
+      />
       <section className="movies" aria-label="Галерея фильмов">
         <div className="movies__container container">
           {isLoading && <Preloader />}

@@ -4,15 +4,14 @@ import { FilterCheckbox } from "../FilterCheckbox";
 import { useEffect, useRef, useState } from "react";
 
 const SearchForm = (props) => {
-  const { onFilter, setIsSearched } = props;
-  const searchText = useRef(localStorage.getItem("searchQuery") || "");
+  const { onFilter, initialText = "", initialShort = false } = props;
+
+  const searchText = useRef(initialText);
   const inputRef = useRef();
   const [submitTime, setSubmitTime] = useState(null);
   const [showSearchMessage, setShowSearchMessage] = useState(null);
-  const [isShort, setIsShort] = useState(() => {
-    const value = localStorage.getItem("isShort");
-    return !value || value === "false" ? false : true;
-  });
+
+  const [isShort, setIsShort] = useState(initialShort);
 
   const handleChange = (evt) => {
     searchText.current = evt.target.value;
@@ -21,7 +20,6 @@ const SearchForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitTime(Date.now());
-    setIsSearched(true);
     if (!searchText.current) {
       setShowSearchMessage(true);
     } else {
@@ -35,8 +33,6 @@ const SearchForm = (props) => {
 
   useEffect(() => {
     onFilter(searchText.current, isShort);
-    localStorage.setItem("searchQuery", searchText.current);
-    localStorage.setItem("isShort", isShort);
   }, [onFilter, isShort, submitTime]);
 
   useEffect(() => {
