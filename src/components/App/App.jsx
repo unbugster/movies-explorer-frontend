@@ -54,11 +54,16 @@ const App = () => {
           }
         })
         .catch((err) => {
-          if (err.status === 401) {
+          if (err === `Error in response: 401`) {
             localStorage.removeItem("jwt");
           }
           console.log(err);
+        })
+        .finally(() => {
+          setIsInited(true);
         });
+    } else {
+      setIsInited(true);
     }
   }, [location.pathname, navigate]);
 
@@ -150,9 +155,6 @@ const App = () => {
         })
         .catch((error) => {
           console.log(`Что-то пошло не так... (${error})`);
-        })
-        .finally(() => {
-          setIsInited(true);
         });
   }, [isLoggedIn, setCurrentUser]);
 
