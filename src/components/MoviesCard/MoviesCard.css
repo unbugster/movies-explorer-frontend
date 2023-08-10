@@ -5,6 +5,7 @@
   width: 100%;
   margin-bottom: 10px;
   min-width: 300px;
+  height: 168px;
 }
 
 @media screen and (min-width: 768px) {
@@ -16,7 +17,7 @@
 
 @media screen and (min-width: 1279px) {
   .moviescard__image {
-    height: auto;
+    height: 151px;
   }
 }
 
@@ -84,16 +85,13 @@
 .moviescard__delete-btn {
   background: no-repeat center/contain
     url("../../images/movies_heart-icon_remove-like.svg");
-  display: none;
   padding: 0;
   margin: 0;
   width: 24px;
   height: 24px;
   border: none;
   cursor: pointer;
-  position: absolute;
-  top: -5px;
-  right: 0;
+  transition: all 0.2s linear;
 }
 
 .moviescard__container:hover .moviescard__delete-btn {

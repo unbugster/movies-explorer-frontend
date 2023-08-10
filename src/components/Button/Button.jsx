@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 
 const Button = (props) => {
   const {
+    type,
     round,
     transparent,
     children,
@@ -12,6 +13,7 @@ const Button = (props) => {
     to,
     onClick,
     activeCls,
+    disabled,
   } = props;
 
   const cls = classNames("button", className, {
@@ -31,7 +33,7 @@ const Button = (props) => {
       {children}
     </NavLink>
   ) : (
-    <button type="button" className={cls}>
+    <button disabled={disabled} type={type} className={cls} onClick={onClick}>
       {children}
     </button>
   );

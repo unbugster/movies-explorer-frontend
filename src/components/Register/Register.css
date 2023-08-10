@@ -169,6 +169,7 @@
   position: absolute;
   margin: -18px 0;
   max-width: 396px;
+  color: #ff4062;
 }
 
 .register-form__api-error {

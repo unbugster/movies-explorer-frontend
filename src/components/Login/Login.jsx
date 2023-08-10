@@ -1,13 +1,34 @@
 import "./Login.css";
 import logo from "../../images/logo.svg";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { validateEmail } from "../../utils/validation";
+import { Button } from "../Button";
 
-const Login = () => {
+const Login = (props) => {
+  const { onLogin, isLoggedIn, apiError, setApiError, state, setState } = props;
   const { values, handleChange, errors, isValid } = useFormAndValidation();
-  const onLogin = (val) => {
-    console.log(val);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/movies");
+    }
+  }, [isLoggedIn, navigate]);
+
+  const emailError = validateEmail(values.email);
+  const btnDisabled = !isValid || emailError;
+
+  const handleRegister = () => {
+    setApiError("");
   };
+
+  useEffect(() => {
+    return () => {
+      setState("default");
+    };
+  }, []);
 
   return (
     <section className="login-page">
@@ -35,6 +56,7 @@ const Login = () => {
             onChange={handleChange}
             type="email"
             placeholder="Введите почту"
+            disabled={state === "loading"}
             required
           />
           <span
@@ -42,7 +64,7 @@ const Login = () => {
               isValid ? "" : "login-form__input-error_active"
             }`}
           >
-            {errors.email}
+            {emailError}
           </span>
         </div>
 
@@ -60,6 +82,7 @@ const Login = () => {
             placeholder="Введите пароль"
             minLength="6"
             maxLength="200"
+            disabled={state === "loading"}
             required
           />
           <span
@@ -71,13 +94,27 @@ const Login = () => {
           </span>
         </div>
 
-        <button type="submit" className="login-form__btn">
+        {apiError && (
+          <span className="login-form__api-error">
+            При авторизации произошла ошибка
+          </span>
+        )}
+
+        <Button
+          type="submit"
+          className="login-form__btn"
+          disabled={btnDisabled}
+        >
           Войти
-        </button>
+        </Button>
 
         <div className="login-page__text">
           <span>Ещё не зарегистрированы? </span>
-          <Link to="/signup" className="login-page__link">
+          <Link
+            onClick={handleRegister}
+            to="/signup"
+            className="login-page__link"
+          >
             Регистрация
           </Link>
         </div>

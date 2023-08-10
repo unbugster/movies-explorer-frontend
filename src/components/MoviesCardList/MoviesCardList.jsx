@@ -1,42 +1,51 @@
 import "./MoviesCardList.css";
-import { MoviesCard } from "../MoviesCard/MoviesCard";
+import { MoviesCard } from "../MoviesCard";
 import useResize from "../../hooks/useResize.js";
-import { Button } from "../Button/Button";
-import { useLocation } from "react-router-dom";
+import { Button } from "../Button";
+import { useEffect, useMemo, useState } from "react";
 
-const MoviesCardList = ({ movies }) => {
-  let size = useResize();
-  let location = useLocation();
+const MoviesCardList = (props) => {
+  const { movies, savedMovies, onSaveMovie, onDeleteMovie } = props;
+  const size = useResize();
+  const [moviesToAdd, setMoviesToAdd] = useState(0);
 
-  movies =
-    location.pathname === "/saved-movies"
-      ? movies.filter((m) => m.isLiked)
-      : movies;
+  const handleClick = () => {
+    setMoviesToAdd((prev) => prev + (size.width >= 1280 ? 4 : 2));
+  };
 
-  movies =
-    location.pathname === "/saved-movies" && size.width <= 450
-      ? movies.slice(0, 2)
-      : movies;
+  useEffect(() => {
+    setMoviesToAdd(0);
+  }, [movies]);
+
+  const moviesToRender = useMemo(() => {
+    const countToRender = size.width < 768 ? 5 : size.width < 1280 ? 8 : 16;
+
+    return movies.slice(0, countToRender + moviesToAdd);
+  }, [movies, moviesToAdd, size]);
 
   return (
     <>
       <ul className="movies-list">
-        {size.width <= 450
-          ? movies?.slice(0, 5).map((movie) => {
-              return <MoviesCard key={movie.movieId} movie={movie} />;
-            })
-          : size.width <= 850
-          ? movies?.slice(0, 8).map((movie) => {
-              return <MoviesCard key={movie.movieId} movie={movie} />;
-            })
-          : movies?.map((movie) => {
-              return <MoviesCard key={movie.movieId} movie={movie} />;
-            })}
+        {moviesToRender.map((movie) => {
+          return (
+            <MoviesCard
+              key={movie.id || movie.movieId}
+              movie={movie}
+              onSaveMovie={onSaveMovie}
+              onDeleteMovie={onDeleteMovie}
+              savedMovies={savedMovies}
+            />
+          );
+        })}
       </ul>
-      {location.pathname === "/saved-movies" ? (
-        <div className="movies-placeholder"></div>
-      ) : (
-        <Button className="button_type_more" btnType="button" transparent>
+
+      {movies.length > moviesToRender.length && (
+        <Button
+          className="button_type_more"
+          btnType="button"
+          transparent
+          onClick={handleClick}
+        >
           Еще
         </Button>
       )}

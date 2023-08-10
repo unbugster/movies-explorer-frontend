@@ -1,15 +1,35 @@
-import "./Register.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
+import "./Register.css";
 import logo from "../../images/logo.svg";
 import { Button } from "../Button";
-
-const Register = () => {
+import { validateEmail, validateName } from "../../utils/validation";
+const Register = (props) => {
+  const { onRegister, isLoggedIn, apiError, setApiError, state, setState } =
+    props;
   const { values, handleChange, errors, isValid } = useFormAndValidation();
+  const navigate = useNavigate();
 
-  const onRegister = (val) => {
-    console.log(val);
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/movies");
+    }
+  }, [isLoggedIn, navigate]);
+
+  const nameError = validateName(values.name);
+  const emailError = validateEmail(values.email);
+  const btnDisabled = !isValid || nameError || emailError;
+
+  const handleLogin = () => {
+    setApiError("");
   };
+
+  useEffect(() => {
+    return () => {
+      setState("default");
+    };
+  }, []);
 
   return (
     <section className="register-page">
@@ -36,8 +56,8 @@ const Register = () => {
             onChange={handleChange}
             type="text"
             placeholder="Введите имя"
-            minLength="2"
             maxLength="40"
+            disabled={state === "loading"}
             required
           />
           <span
@@ -45,7 +65,7 @@ const Register = () => {
               isValid ? "" : "register-form__input-error_active"
             }`}
           >
-            {errors.name}
+            {nameError}
           </span>
         </div>
 
@@ -61,6 +81,7 @@ const Register = () => {
             onChange={handleChange}
             type="email"
             placeholder="Введите почту"
+            disabled={state === "loading"}
             required
           />
           <span
@@ -68,7 +89,7 @@ const Register = () => {
               isValid ? "" : "register-form__input-error_active"
             }`}
           >
-            {errors.email}
+            {emailError}
           </span>
         </div>
 
@@ -87,6 +108,7 @@ const Register = () => {
             minLength="6"
             maxLength="200"
             required
+            disabled={state === "loading"}
           />
           <span
             className={`register-form__input-error ${
@@ -95,21 +117,28 @@ const Register = () => {
           >
             {errors.password}
           </span>
-          <span className="register-form__api-error">
-            Что-то пошло не так...
-          </span>
+          <span className="register-form__api-error"></span>
         </div>
+        {apiError && (
+          <span className="register-form__api-error">
+            При регистрации пользователя произошла ошибка
+          </span>
+        )}
         <Button
           type="submit"
           className="register-form__btn"
-          disabled={!isValid}
+          disabled={btnDisabled}
         >
           Зарегистрироваться
         </Button>
 
         <div className="register-page__text">
           <span>Уже зарегистрированы? </span>
-          <Link to="/signin" className="register-page__link">
+          <Link
+            onClick={handleLogin}
+            to="/signin"
+            className="register-page__link"
+          >
             Войти
           </Link>
         </div>

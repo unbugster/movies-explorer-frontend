@@ -1,29 +1,72 @@
 import "./Profile.css";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 import { useNavigate } from "react-router-dom";
+import { useContext, useEffect, useRef } from "react";
+import { Button } from "../Button";
+import { validateEmail, validateName } from "../../utils/validation";
+import { UserContext } from "../UserContext";
 
-const Profile = () => {
-  const { values, handleChange, errors, isValid } = useFormAndValidation();
+const Profile = (props) => {
+  const { onEditProfile, state, setState, setIsLoggedIn } = props;
+  const { values, handleChange, isValid, setValues, setIsValid } =
+    useFormAndValidation();
+  const inputNameRef = useRef();
+  const inputEmailRef = useRef();
+
+  const { currentUser } = useContext(UserContext);
+
+  const handleInputChange = (evt) => {
+    handleChange(evt);
+    setState("edited");
+  };
+
+  const handleEditClick = (evt) => {
+    evt.preventDefault();
+    setState("edited");
+  };
+
+  const onSubmit = (evt) => {
+    evt.preventDefault();
+    onEditProfile(values);
+  };
+
   const navigate = useNavigate();
 
-  const onEditProfile = (val) => {
-    console.log(val);
-  };
+  useEffect(() => {
+    if (currentUser) {
+      setValues(currentUser);
+      setIsValid(true);
+    }
+  }, [currentUser, setIsValid, setValues]);
 
   const handleLogoutClick = () => {
+    localStorage.clear();
     navigate("/");
+    setIsLoggedIn(false);
   };
+  const nameError = validateName(values.name);
+  const emailError = validateEmail(values.email);
+  const btnDisabled =
+    !isValid ||
+    nameError ||
+    emailError ||
+    state === "error" ||
+    (inputEmailRef.current.value === currentUser.email &&
+      inputNameRef.current.value === currentUser.name);
+
+  useEffect(() => {
+    return () => {
+      setState("default");
+    };
+  }, []);
+
+  const inputDisabled =
+    state === "default" || state === "success" || state === "loading";
 
   return (
     <section className="profile">
-      <h1 className="profile__welcome">Привет, Виталий!</h1>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          onEditProfile(values);
-        }}
-        className="profile-form"
-      >
+      <h1 className="profile__welcome">Привет, {currentUser.name}!</h1>
+      <form onSubmit={onSubmit} className="profile-form">
         <div className="profile-form__input-field">
           <label className="profile-form__label" htmlFor="user-name-input">
             Имя
@@ -32,21 +75,21 @@ const Profile = () => {
             className="profile-form__input"
             id="user-name-input"
             name="name"
-            value="Виталий"
-            // value={values.name || ''}
-            onChange={handleChange}
+            value={values.name || ""}
+            onChange={handleInputChange}
             type="text"
             placeholder="Введите имя"
-            minLength="2"
             maxLength="40"
             required
+            ref={inputNameRef}
+            disabled={inputDisabled}
           />
           <span
             className={`profile-form__input-error ${
               isValid ? "" : "profile-form__input-error_active"
             }`}
           >
-            {errors.name}
+            {nameError}
           </span>
         </div>
 
@@ -58,11 +101,12 @@ const Profile = () => {
             className="profile-form__input"
             id="user-email-input"
             name="email"
-            value="pochta@yandex.ru"
-            // value={values.email || ''}
-            onChange={handleChange}
+            value={values.email || ""}
+            onChange={handleInputChange}
             type="email"
             placeholder="Введите почту"
+            ref={inputEmailRef}
+            disabled={inputDisabled}
             required
           />
           <span
@@ -70,16 +114,42 @@ const Profile = () => {
               isValid ? "" : "profile-form__input-error_active"
             }`}
           >
-            {errors.email}
+            {emailError}
           </span>
         </div>
 
-        <button
-          type="submit"
-          className="profile-form__button profile-form__button-edit"
-        >
-          Редактировать
-        </button>
+        {state === "success" && (
+          <span className="profile-form__success-message">
+            Данные успешно обновлены!
+          </span>
+        )}
+
+        {state === "error" && (
+          <span className="profile-form__error-message">
+            При обновлении профиля произошла ошибка.
+          </span>
+        )}
+
+        {(state === "edited" || state === "error") && (
+          <Button
+            type="submit"
+            className="profile-form__button profile-form__button-save"
+            disabled={btnDisabled}
+          >
+            Сохранить
+          </Button>
+        )}
+
+        {(state === "default" || state === "success") && (
+          <Button
+            type="button"
+            className="profile-form__button profile-form__button-edit"
+            onClick={handleEditClick}
+          >
+            Редактировать
+          </Button>
+        )}
+
         <button
           type="button"
           className="profile-form__button profile-form__button-signout"
